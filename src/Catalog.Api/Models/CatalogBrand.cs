@@ -5,8 +5,7 @@ namespace Catalog.Api.Models
 {
     public class CatalogBrand
     {
-        [JsonIgnore]
-        public int Id { get; set; }
+        public int Id { get; private set; }
         
         [Required(ErrorMessage = "Brand is required.")]
         public string? Brand { get; set; }

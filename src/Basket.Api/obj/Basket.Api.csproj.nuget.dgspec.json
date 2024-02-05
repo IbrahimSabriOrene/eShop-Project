@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\PC-1\\Projects\\eShop-Project\\src\\Basket.Api\\Basket.Api.csproj": {}
+    "c:\\Users\\PC-1\\Projects\\eShop-Project\\src\\Basket.Api\\Basket.Api.csproj": {}
   },
   "projects": {
-    "C:\\Users\\PC-1\\Projects\\eShop-Project\\src\\Basket.Api\\Basket.Api.csproj": {
+    "c:\\Users\\PC-1\\Projects\\eShop-Project\\src\\Basket.Api\\Basket.Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\PC-1\\Projects\\eShop-Project\\src\\Basket.Api\\Basket.Api.csproj",
+        "projectUniqueName": "c:\\Users\\PC-1\\Projects\\eShop-Project\\src\\Basket.Api\\Basket.Api.csproj",
         "projectName": "Basket.Api",
-        "projectPath": "C:\\Users\\PC-1\\Projects\\eShop-Project\\src\\Basket.Api\\Basket.Api.csproj",
+        "projectPath": "c:\\Users\\PC-1\\Projects\\eShop-Project\\src\\Basket.Api\\Basket.Api.csproj",
         "packagesPath": "C:\\Users\\PC-1\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\PC-1\\Projects\\eShop-Project\\src\\Basket.Api\\obj\\",
+        "outputPath": "c:\\Users\\PC-1\\Projects\\eShop-Project\\src\\Basket.Api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\PC-1\\AppData\\Roaming\\NuGet\\NuGet.Config"

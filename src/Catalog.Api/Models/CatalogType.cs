@@ -5,8 +5,7 @@ namespace Catalog.Api.Models
 {
     public class CatalogType
     {
-        [JsonIgnore]
-        public int Id { get; set; }
+        public int Id { get; private set; }
         [Required(ErrorMessage = "Type is required.")]
         public string? Type { get; set; }   
     }

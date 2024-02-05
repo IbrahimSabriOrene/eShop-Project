@@ -9,8 +9,7 @@ namespace Catalog.Api.Models
 {
     public class CatalogItem
     {
-        [JsonIgnore]
-        public int Id { get; set; }
+        public int Id { get; private set; }
 
         [Required(ErrorMessage = "Name is required.")]
         public string? Name { get; set; }

@@ -17,7 +17,7 @@
 - Only Admins have  access to create new brands.(For now)
 - Then Brand and lastly Items
 
-
+- Make Requests.cs files and map them correctly.
 
 Json Response will be like this:
 {

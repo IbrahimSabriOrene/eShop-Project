@@ -2,69 +2,176 @@ using Dapper;
 using Catalog.Api.Models;
 using Catalog.Api.Helpers;
 using Microsoft.Extensions.Options;
+using System.Text;
 
 namespace Catalog.Api.Repositories
 {
     public class CatalogRepository
     {
         private readonly DbContext _dbContext;
-        public CatalogRepository( DbContext dbContext)
+        public CatalogRepository(DbContext dbContext)
         {
             _dbContext = dbContext;
+        }
+        private enum CatalogQuery
+        {
+            GetAllCatalogItems,
+            GetCatalogItemById,
+            GetCatalogItemsByBrand,
+            GetCatalogItemsByType,
+            GetCatalogBrands,
+            CreateCatalogBrand,
+            GetCatalogTypes,
+            CreateCatalogType,
+            GetCatalogType,
+            UpdateCatalogType,
+            CreateCatalogItem,
+            UpdateCatalogItem,
+            DeleteCatalogItem
+        }
+        private static string GetQuery(CatalogQuery catalogQuery)
+        {
+            var sql = new StringBuilder();
+
+            switch (catalogQuery)
+            {
+                case CatalogQuery.GetAllCatalogItems:
+                    sql.Append("SELECT * FROM CatalogItem");
+                    break;
+
+                case CatalogQuery.GetCatalogItemById:
+                    sql.Append("SELECT * FROM CatalogItem WHERE Id = @id");
+                    break;
+
+                case CatalogQuery.CreateCatalogBrand:
+                    sql.Append("INSERT INTO CatalogBrand (Brand) VALUES (@Brand)");
+                    break;
+                case CatalogQuery.GetCatalogItemsByBrand:
+                    sql.Append("SELECT * FROM CatalogItem WHERE CatalogBrandId = @brandId");
+                    break;
+                case CatalogQuery.GetCatalogItemsByType:
+                    sql.Append("SELECT * FROM CatalogItem WHERE CatalogTypeId = @typeId");
+                    break;
+                case CatalogQuery.GetCatalogBrands:
+                    sql.Append("SELECT * FROM CatalogBrand");
+                    break;
+                case CatalogQuery.GetCatalogTypes:
+                    sql.Append("SELECT * FROM CatalogType");
+                    break;
+                case CatalogQuery.CreateCatalogType:
+                    sql.Append("INSERT INTO CatalogType (Type) VALUES (@Type)");
+                    break;
+                case CatalogQuery.GetCatalogType:
+                    sql.Append("SELECT * FROM CatalogType WHERE Id = @id");
+                    break;
+                case CatalogQuery.UpdateCatalogType:
+                    sql.Append("UPDATE CatalogType SET Type = @Type WHERE Id = @Id");
+                    break;
+                case CatalogQuery.DeleteCatalogItem:
+                    sql.Append("DELETE FROM CatalogItem WHERE Id = @id");
+                    break;
+                case CatalogQuery.UpdateCatalogItem:
+                    sql.Append("UPDATE CatalogItem SET Name = @Name, Description = @Description, Price = @Price, ImageFile = @ImageFile, CatalogTypeId = @CatalogTypeId, CatalogBrandId = @CatalogBrandId WHERE Id = @Id");
+                    break;
+                case CatalogQuery.CreateCatalogItem:
+                    sql.Append(@"INSERT INTO CatalogItem (Name, Description, Price, ImageFile, CatalogTypeId, CatalogBrandId)
+                     VALUES (@Name, @Description, @Price, @ImageFile, @CatalogTypeId, @CatalogBrandId) RETURNING Id");
+                    break;
+
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(catalogQuery), catalogQuery, null);
+            }
+
+            return sql.ToString();
         }
 
         public async Task<IEnumerable<CatalogItem>> GetCatalogItems()
         {
             using var connection = _dbContext.CreateConnection();
-            return await connection.QueryAsync<CatalogItem>("SELECT * FROM CatalogItems");
+            return await connection.QueryAsync<CatalogItem>(GetQuery(CatalogQuery.GetAllCatalogItems));
         }
 
         public async Task<CatalogItem> GetCatalogItem(int id)
         {
             using var connection = _dbContext.CreateConnection();
-            return await connection.QueryFirstOrDefaultAsync<CatalogItem>("SELECT * FROM CatalogItems WHERE Id = @id", new { id }) ?? throw new KeyNotFoundException();
+            return await connection.QueryFirstOrDefaultAsync<CatalogItem>(GetQuery(CatalogQuery.GetCatalogItemById), new { id }) ?? throw new KeyNotFoundException();
         }
 
         public async Task<IEnumerable<CatalogItem>> GetCatalogItemsByBrand(int brandId)
         {
             using var connection = _dbContext.CreateConnection();
-            return await connection.QueryAsync<CatalogItem>("SELECT * FROM CatalogItems WHERE CatalogBrandId = @brandId", new { brandId });
+            return await connection.QueryAsync<CatalogItem>(GetQuery(CatalogQuery.GetCatalogItemsByBrand), new { brandId });
         }
 
         public async Task<IEnumerable<CatalogItem>> GetCatalogItemsByType(int typeId)
         {
             using var connection = _dbContext.CreateConnection();
-            return await connection.QueryAsync<CatalogItem>("SELECT * FROM CatalogItems WHERE CatalogTypeId = @typeId", new { typeId });
+            return await connection.QueryAsync<CatalogItem>(GetQuery(CatalogQuery.GetCatalogItemsByType), new { typeId });
         }
 
         public async Task<IEnumerable<CatalogBrand>> GetCatalogBrands()
         {
             using var connection = _dbContext.CreateConnection();
-            return await connection.QueryAsync<CatalogBrand>("SELECT * FROM CatalogBrand");
+            return await connection.QueryAsync<CatalogBrand>(GetQuery(CatalogQuery.GetCatalogBrands));
+        }
+
+        public async Task<CatalogBrand> CreateCatalogBrand(CatalogBrand catalogBrand)
+        {
+            using var connection = _dbContext.CreateConnection();
+
+            await connection.ExecuteAsync(GetQuery(CatalogQuery.CreateCatalogBrand), catalogBrand);
+            return catalogBrand;
         }
 
         public async Task<IEnumerable<CatalogType>> GetCatalogTypes()
         {
             using var connection = _dbContext.CreateConnection();
-            return await connection.QueryAsync<CatalogType>("SELECT * FROM CatalogType");
+            return await connection.QueryAsync<CatalogType>(GetQuery(CatalogQuery.GetCatalogTypes));
         }
 
-        public async Task<CatalogItem> CreateCatalogItem(CatalogItem catalogItem)
+        public async Task<CatalogType> CreateCatalogType(CatalogType catalogType)
+        {
+            using var connection = _dbContext.CreateConnection();
+            await connection.ExecuteAsync(GetQuery(CatalogQuery.CreateCatalogType), catalogType);
+            return catalogType;
+        }
+
+        public async Task<CatalogType> GetCatalogType(int id)
+        {
+            using var connection = _dbContext.CreateConnection();
+            return await connection.QueryFirstOrDefaultAsync<CatalogType>(GetQuery(CatalogQuery.GetCatalogType), new { id }) ?? throw new KeyNotFoundException();
+        }
+
+        public async Task<CatalogType> UpdateCatalogType(CatalogType catalogType)
+        {
+            using var connection = _dbContext.CreateConnection();
+   
+            await connection.ExecuteAsync(GetQuery(CatalogQuery.UpdateCatalogType), catalogType);
+            return catalogType;
+        }
+
+        public async Task<int> CreateCatalogItem(CatalogItem catalogItem)
         {
             // Returning id part a bit problematic
             using var connection = _dbContext.CreateConnection();
-            var sql = "INSERT INTO CatalogItem (Name, Description, Price, ImageFile, CatalogTypeId, CatalogBrandId) VALUES (@Name, @Description, @Price, @ImageFile, @CatalogTypeId, @CatalogBrandId) RETURNING Id";
-            var id = await connection.QuerySingleAsync<int>(sql, catalogItem);
-            catalogItem.Id = id;
-            return catalogItem;
+   
+            var id = await connection.ExecuteAsync(GetQuery(CatalogQuery.CreateCatalogItem), catalogItem);
+            return id;
         }
 
 
         public async Task<bool> UpdateCatalogItem(CatalogItem catalogItem)
         {
             using var connection = _dbContext.CreateConnection();
-            var sql = "UPDATE CatalogItems SET Name = @Name, Description = @Description, Price = @Price, ImageFile = @ImageFile, CatalogTypeId = @CatalogTypeId, CatalogBrandId = @CatalogBrandId WHERE Id = @Id";
-            return await connection.ExecuteAsync(sql, catalogItem) > 0;
+   
+            return await connection.ExecuteAsync(GetQuery(CatalogQuery.UpdateCatalogItem), catalogItem) > 0;
+        }
+
+        public async Task<bool> DeleteCatalogItem(int id)
+        {
+            using var connection = _dbContext.CreateConnection();
+   
+            return await connection.ExecuteAsync(GetQuery(CatalogQuery.DeleteCatalogItem), new { id }) > 0;
         }
 
     }
