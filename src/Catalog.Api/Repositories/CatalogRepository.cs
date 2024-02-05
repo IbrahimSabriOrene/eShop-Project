@@ -27,7 +27,10 @@ namespace Catalog.Api.Repositories
             UpdateCatalogType,
             CreateCatalogItem,
             UpdateCatalogItem,
-            DeleteCatalogItem
+            DeleteCatalogItem,
+            GetCatalogItemsByTypeAndBrandId,
+            GetCatalogItemByName,
+            GetCatalogItemByIds
         }
         private static string GetQuery(CatalogQuery catalogQuery)
         {
@@ -41,6 +44,9 @@ namespace Catalog.Api.Repositories
 
                 case CatalogQuery.GetCatalogItemById:
                     sql.Append("SELECT * FROM CatalogItem WHERE Id = @id");
+                    break;
+                case CatalogQuery.GetCatalogItemByIds:
+                   sql.Append("SELECT * FROM CatalogItem WHERE Id = ANY(@ids)");
                     break;
 
                 case CatalogQuery.CreateCatalogBrand:
@@ -77,6 +83,13 @@ namespace Catalog.Api.Repositories
                     sql.Append(@"INSERT INTO CatalogItem (Name, Description, Price, ImageFile, CatalogTypeId, CatalogBrandId)
                      VALUES (@Name, @Description, @Price, @ImageFile, @CatalogTypeId, @CatalogBrandId) RETURNING Id");
                     break;
+                case CatalogQuery.GetCatalogItemsByTypeAndBrandId:
+                    sql.Append("SELECT * FROM CatalogItem WHERE CatalogTypeId = @typeId AND CatalogBrandId = @brandId");
+                    break;
+                case CatalogQuery.GetCatalogItemByName:
+                    sql.Append("SELECT * FROM CatalogItem WHERE Name = @name");
+                    break;
+
 
                 default:
                     throw new ArgumentOutOfRangeException(nameof(catalogQuery), catalogQuery, null);
@@ -85,37 +98,37 @@ namespace Catalog.Api.Repositories
             return sql.ToString();
         }
 
-        public async Task<IEnumerable<CatalogItem>> GetCatalogItems()
+        public async Task<IEnumerable<CatalogItem?>> GetCatalogItems()
         {
             using var connection = _dbContext.CreateConnection();
             return await connection.QueryAsync<CatalogItem>(GetQuery(CatalogQuery.GetAllCatalogItems));
         }
 
-        public async Task<CatalogItem> GetCatalogItem(int id)
+        public async Task<CatalogItem?> GetCatalogItem(int id)
         {
             using var connection = _dbContext.CreateConnection();
             return await connection.QueryFirstOrDefaultAsync<CatalogItem>(GetQuery(CatalogQuery.GetCatalogItemById), new { id }) ?? throw new KeyNotFoundException();
         }
 
-        public async Task<IEnumerable<CatalogItem>> GetCatalogItemsByBrand(int brandId)
+        public async Task<IEnumerable<CatalogItem?>> GetCatalogItemsByBrand(int brandId)
         {
             using var connection = _dbContext.CreateConnection();
             return await connection.QueryAsync<CatalogItem>(GetQuery(CatalogQuery.GetCatalogItemsByBrand), new { brandId });
         }
 
-        public async Task<IEnumerable<CatalogItem>> GetCatalogItemsByType(int typeId)
+        public async Task<IEnumerable<CatalogItem?>> GetCatalogItemsByType(int typeId)
         {
             using var connection = _dbContext.CreateConnection();
             return await connection.QueryAsync<CatalogItem>(GetQuery(CatalogQuery.GetCatalogItemsByType), new { typeId });
         }
 
-        public async Task<IEnumerable<CatalogBrand>> GetCatalogBrands()
+        public async Task<IEnumerable<CatalogBrand?>> GetCatalogBrands()
         {
             using var connection = _dbContext.CreateConnection();
             return await connection.QueryAsync<CatalogBrand>(GetQuery(CatalogQuery.GetCatalogBrands));
         }
 
-        public async Task<CatalogBrand> CreateCatalogBrand(CatalogBrand catalogBrand)
+        public async Task<CatalogBrand?> CreateCatalogBrand(CatalogBrand catalogBrand)
         {
             using var connection = _dbContext.CreateConnection();
 
@@ -123,38 +136,38 @@ namespace Catalog.Api.Repositories
             return catalogBrand;
         }
 
-        public async Task<IEnumerable<CatalogType>> GetCatalogTypes()
+        public async Task<IEnumerable<CatalogType?>> GetCatalogTypes()
         {
             using var connection = _dbContext.CreateConnection();
             return await connection.QueryAsync<CatalogType>(GetQuery(CatalogQuery.GetCatalogTypes));
         }
 
-        public async Task<CatalogType> CreateCatalogType(CatalogType catalogType)
+        public async Task<CatalogType?> CreateCatalogType(CatalogType catalogType)
         {
             using var connection = _dbContext.CreateConnection();
             await connection.ExecuteAsync(GetQuery(CatalogQuery.CreateCatalogType), catalogType);
             return catalogType;
         }
 
-        public async Task<CatalogType> GetCatalogType(int id)
+        public async Task<CatalogType?> GetCatalogType(int id)
         {
             using var connection = _dbContext.CreateConnection();
             return await connection.QueryFirstOrDefaultAsync<CatalogType>(GetQuery(CatalogQuery.GetCatalogType), new { id }) ?? throw new KeyNotFoundException();
         }
 
-        public async Task<CatalogType> UpdateCatalogType(CatalogType catalogType)
+        public async Task<CatalogType?> UpdateCatalogType(CatalogType catalogType)
         {
             using var connection = _dbContext.CreateConnection();
-   
+
             await connection.ExecuteAsync(GetQuery(CatalogQuery.UpdateCatalogType), catalogType);
             return catalogType;
         }
 
-        public async Task<int> CreateCatalogItem(CatalogItem catalogItem)
+        public async Task<int?> CreateCatalogItem(CatalogItem catalogItem)
         {
             // Returning id part a bit problematic
             using var connection = _dbContext.CreateConnection();
-   
+
             var id = await connection.ExecuteAsync(GetQuery(CatalogQuery.CreateCatalogItem), catalogItem);
             return id;
         }
@@ -163,16 +176,34 @@ namespace Catalog.Api.Repositories
         public async Task<bool> UpdateCatalogItem(CatalogItem catalogItem)
         {
             using var connection = _dbContext.CreateConnection();
-   
+
             return await connection.ExecuteAsync(GetQuery(CatalogQuery.UpdateCatalogItem), catalogItem) > 0;
         }
 
         public async Task<bool> DeleteCatalogItem(int id)
         {
             using var connection = _dbContext.CreateConnection();
-   
+
             return await connection.ExecuteAsync(GetQuery(CatalogQuery.DeleteCatalogItem), new { id }) > 0;
         }
 
+        public async Task<IEnumerable<CatalogItem?>> GetCatalogItemsBrandAndTypeId(int typeId, int brandId)
+        {
+            using var connection = _dbContext.CreateConnection();
+            return await connection.QueryAsync<CatalogItem>(GetQuery(CatalogQuery.GetCatalogItemsByTypeAndBrandId), new { typeId, brandId });
+
+        }
+
+        public async Task<CatalogItem?> GetCatalogItemByName(string name)
+        {
+            using var connection = _dbContext.CreateConnection();
+            return await connection.QueryFirstOrDefaultAsync<CatalogItem>(GetQuery(CatalogQuery.GetCatalogItemByName), new { name });
+        }
+
+        public async Task<IEnumerable<CatalogItem?>> GetCatalogItemsByIds(int[] ids)
+        {
+            using var connection = _dbContext.CreateConnection();
+            return await connection.QueryAsync<CatalogItem>(GetQuery(CatalogQuery.GetCatalogItemByIds), new { ids });
+        }
     }
 }

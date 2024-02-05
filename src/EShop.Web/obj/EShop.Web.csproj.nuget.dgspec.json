@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\PC-1\\Projects\\eShop-Project\\src\\EShop.Web\\EShop.Web.csproj": {}
+    "C:\\Users\\PC-1\\Projects\\eShop-Project\\src\\EShop.Web\\EShop.Web.csproj": {}
   },
   "projects": {
-    "c:\\Users\\PC-1\\Projects\\eShop-Project\\src\\EShop.Web\\EShop.Web.csproj": {
+    "C:\\Users\\PC-1\\Projects\\eShop-Project\\src\\EShop.Web\\EShop.Web.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\PC-1\\Projects\\eShop-Project\\src\\EShop.Web\\EShop.Web.csproj",
+        "projectUniqueName": "C:\\Users\\PC-1\\Projects\\eShop-Project\\src\\EShop.Web\\EShop.Web.csproj",
         "projectName": "EShop.Web",
-        "projectPath": "c:\\Users\\PC-1\\Projects\\eShop-Project\\src\\EShop.Web\\EShop.Web.csproj",
+        "projectPath": "C:\\Users\\PC-1\\Projects\\eShop-Project\\src\\EShop.Web\\EShop.Web.csproj",
         "packagesPath": "C:\\Users\\PC-1\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\PC-1\\Projects\\eShop-Project\\src\\EShop.Web\\obj\\",
+        "outputPath": "C:\\Users\\PC-1\\Projects\\eShop-Project\\src\\EShop.Web\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\PC-1\\AppData\\Roaming\\NuGet\\NuGet.Config"

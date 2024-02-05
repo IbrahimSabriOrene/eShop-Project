@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "is7ROB+Z9VfXh1dTE+ZzFYqN8MnKDg74/2z4Z/vAYpa3dqjhf9/UZ9pkrkSC3WfUGP3DznZmswfVKl/0PpK+hw==",
+  "dgSpecHash": "GQ+tu3x5jjznLNmMIcq52muaNVQWLpYbTB1JJ5hfm40JXJE0At6/0Z57dzyotk+zf/LPOs9s6hN1JxR7GzGOEw==",
   "success": true,
-  "projectFilePath": "c:\\Users\\PC-1\\Projects\\eShop-Project\\src\\EShop.Web\\EShop.Web.csproj",
+  "projectFilePath": "C:\\Users\\PC-1\\Projects\\eShop-Project\\src\\EShop.Web\\EShop.Web.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\PC-1\\.nuget\\packages\\auth0.aspnetcore.authentication\\1.4.1\\auth0.aspnetcore.authentication.1.4.1.nupkg.sha512",
     "C:\\Users\\PC-1\\.nuget\\packages\\microsoft.aspnetcore.authentication.openidconnect\\6.0.26\\microsoft.aspnetcore.authentication.openidconnect.6.0.26.nupkg.sha512",

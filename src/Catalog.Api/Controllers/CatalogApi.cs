@@ -9,11 +9,10 @@ public static class CatalogApi
     public static IEndpointRouteBuilder MapCatalogApi(this IEndpointRouteBuilder app)
     {
         // Products
-        app.MapGet("/api/products", GetAllProducts);
-        app.MapPost("/api/products/by", GetProductsByIds);
-        app.MapGet("/api/products/{id:int}", GetProductById);
-        app.MapGet("/api/products/by-name/{name:minlength(1)}", GetProductsByName);
-        app.MapGet("/api/products/{catalogProductId:int}/picture", GetProductPictureById);
+        app.MapGet("/api/products", GetAllCatalogItems);
+        app.MapPost("/api/products/by", GetCatalogItemsByIds);
+        app.MapGet("/api/products/{id:int}", GetCatalogItemsById);
+        app.MapGet("/api/products/by-name/{name:minlength(1)}", GetCatalogItemsByName);
         app.MapGet("/api/products/by-type/{typeId}/by-brand/{brandId?}", GetProductsByBrandAndTypeId);
         app.MapGet("/api/products/by-brand/{brandId:int?}", GetProductsByBrandId);
         app.MapPut("/api/products", UpdateProduct);
@@ -149,8 +148,16 @@ public static class CatalogApi
 
     private static async Task<CatalogItem> DeleteProductById([FromServices] CatalogService services, int id)
     {
-        await Task.CompletedTask;
-        throw new NotImplementedException();
+        try
+        {
+            var product = await services.Repository.GetCatalogItem(id) ?? throw new KeyNotFoundException();
+            await services.Repository.DeleteCatalogItem(id);
+            return product;
+        }
+        catch (Exception ex)
+        {
+            throw new Exception("Error deleting product with id: " + id, ex); // Change this to logger
+        }
     }
 
     //  Change this part
@@ -185,50 +192,90 @@ public static class CatalogApi
         }
     }
 
-    private static async Task<CatalogItem> GetProductsByBrandId(int? brandId, [FromServices] CatalogService services)
+    private static async Task<IEnumerable<CatalogItem>> GetProductsByBrandId(int brandId, [FromServices] CatalogService services)
     {
-        await Task.CompletedTask;
-        throw new NotImplementedException();
+        try
+        {
+            var products = await services.Repository.GetCatalogItemsByBrand(brandId) ?? throw new KeyNotFoundException();
+            return products;
+        }
+        catch (Exception ex)
+        {
+            throw new Exception("Error getting products by brand with id: " + brandId, ex); // Change this to logger
+        }
     }
 
-    private static async Task<CatalogItem> GetProductsByBrandAndTypeId(
+    private static async Task<IEnumerable<CatalogItem>> GetProductsByBrandAndTypeId(
         [FromServices] CatalogService services,
         int typeId,
-         int? brandId)
+         int brandId)
     {
-        await Task.CompletedTask;
-        throw new NotImplementedException();
+        try
+        {
+            var products = await services.Repository.GetCatalogItemsBrandAndTypeId(typeId, brandId) ?? throw new KeyNotFoundException();
+            return products;
+        }
+        catch (Exception ex)
+        {
+            throw new Exception("Error getting products by type with id: " + typeId, ex); // Change this to logger
+        }
     }
 
-    private static async Task<CatalogItem> GetProductPictureById([FromServices] CatalogService services, int catalogProductId)
+    private static async Task<CatalogItem> GetCatalogItemsByName([FromServices] CatalogService services, string name)
     {
-        await Task.CompletedTask;
-        throw new NotImplementedException();
+        try
+        {
+            var product = await services.Repository.GetCatalogItemByName(name) ?? throw new KeyNotFoundException();
+            return product;
+        }
+        catch (Exception ex)
+        {
+            throw new Exception("Error getting product by name: " + name, ex); // Change this to logger
+        }
     }
 
-    private static async Task<CatalogItem> GetProductsByName([FromServices] CatalogService services, string name)
+    private static async Task<CatalogItem> GetCatalogItemsById([FromServices] CatalogService services, int id)
     {
-        await Task.CompletedTask;
-        throw new NotImplementedException();
+       try
+        {
+            var product = await services.Repository.GetCatalogItem(id) ?? throw new KeyNotFoundException();
+            return product;
+        }
+        catch (Exception ex)
+        {
+            throw new Exception("Error getting product by id: " + id, ex); // Change this to logger
+        }
     }
 
-    private static async Task<CatalogItem> GetProductById([FromServices] CatalogService services, int id)
+    private static async Task<IEnumerable<CatalogItem>> GetCatalogItemsByIds([FromServices] CatalogService services, [FromBody] int[] ids)
     {
-        await Task.CompletedTask;
-        throw new NotImplementedException();
+        try
+        {
+            var products = await services.Repository.GetCatalogItemsByIds(ids) ?? throw new KeyNotFoundException();
+            return products;
+        }
+        catch (Exception ex)
+        {
+            throw new Exception("Error getting products by ids: " + ids, ex); // Change this to logger
+        }
     }
 
-    private static async Task<IEnumerable<CatalogItem>> GetProductsByIds([FromServices] CatalogService services, [FromBody] int[] ids)
+    private static async Task<IEnumerable<CatalogItem>> GetAllCatalogItems([FromServices] CatalogService services)
     {
-        await Task.CompletedTask;
-        throw new NotImplementedException();
-    }
-
-    private static async Task<IEnumerable<CatalogItem>> GetAllProducts([FromServices] CatalogService services)
-    {
-        await Task.CompletedTask;
-        var products = await services.Repository.GetCatalogItems();
-        return products;
+        try
+        {
+            var products = await services.Repository.GetCatalogItems() ?? throw new KeyNotFoundException();
+            
+            return products;
+        }
+        catch (Exception ex)
+        {
+            throw new Exception("Error getting all products", ex); // Change this to logger
+        }
     }
 }
+
+
+
+
 
