@@ -3,6 +3,7 @@ using Auth0.AspNetCore.Authentication;
 var builder = WebApplication.CreateBuilder(args);
 {
 builder.Services.AddRazorPages();
+
 builder.Services
     .AddAuth0WebAppAuthentication(options => {
       options.Domain = builder.Configuration["Auth0:Domain"];

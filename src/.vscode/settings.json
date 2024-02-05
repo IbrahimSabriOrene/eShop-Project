@@ -1,7 +1,10 @@
 {
     "cSpell.words": [
+        "datname",
         "Hsts",
+        "Npgsql",
         "propg",
-        "serilog"
+        "serilog",
+        "USERID"
     ]
 }
