@@ -1,4 +1,3 @@
-using Catalog.Api.Models;
 using Catalog.Api.Repositories;
 
 namespace Catalog.Api.Services

@@ -14,20 +14,21 @@ namespace Basket.Api.Services
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
-        public async Task<ShoppingCart> GetShoppingCartAsync(string userId)
+        public async Task<ShoppingCart> GetShoppingCartAsync(string userName)
         {
             try
             {
-                var shoppingCart = await _shoppingCartRepository.GetShoppingCartAsync(userId);
+                var shoppingCart = await _shoppingCartRepository.GetShoppingCartAsync(userName);
                 return shoppingCart;
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Error while getting shopping cart {userId}", userId);
+                _logger.LogError(ex, "Error while getting shopping cart {userId}", userName);
                 throw;
             }
         }
 
+       
         public async Task<ShoppingCart> UpdateShoppingCartAsync(ShoppingCart shoppingCart)
         {
 

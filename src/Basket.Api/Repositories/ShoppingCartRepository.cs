@@ -9,6 +9,7 @@ namespace Basket.Api.Repositories
     public class ShoppingCartRepository : IShoppingCartRepository
     {
         private readonly IDistributedCache _redisCache;
+        
         private readonly ILogger<ShoppingCartRepository> _logger;
        
         public ShoppingCartRepository(IDistributedCache redisCache, ILogger<ShoppingCartRepository> logger)
@@ -22,11 +23,14 @@ namespace Basket.Api.Repositories
         {
             
             var basket = await _redisCache.GetStringAsync(userId);
+            var result = JsonConvert.DeserializeObject<ShoppingCart>(basket);
 
-            return JsonConvert.DeserializeObject<ShoppingCart>(basket) ?? throw new AppException("Couldn't find any basket");
+            return result ?? throw new AppException("Couldn't find any basket");
         }
 
-           public async Task<ShoppingCart> UpdateShoppingCartAsync(ShoppingCart basket)
+       
+
+        public async Task<ShoppingCart> UpdateShoppingCartAsync(ShoppingCart basket)
         {
             await _redisCache.SetStringAsync(basket.UserName, JsonConvert.SerializeObject(basket));
             

@@ -4,7 +4,6 @@ using Microsoft.Extensions.Options;
 using Npgsql;
 
 namespace Catalog.Api.Helpers;
-// Make this class static to avoid instantiation
 public class DbContext
 {
     private readonly DbSettings _dbSettings;

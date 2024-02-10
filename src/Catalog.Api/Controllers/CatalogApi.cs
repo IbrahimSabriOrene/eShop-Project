@@ -15,7 +15,7 @@ public static class CatalogApi
         app.MapGet("/api/products/by-name/{name:minlength(1)}", GetCatalogItemsByName);
         app.MapGet("/api/products/by-type/{typeId}/by-brand/{brandId?}", GetProductsByBrandAndTypeId);
         app.MapGet("/api/products/by-brand/{brandId:int?}", GetProductsByBrandId);
-        app.MapPut("/api/products", UpdateProduct);
+        app.MapPut("/api/products/{id:int}", UpdateProduct);
         app.MapPost("/api/products", CreateProduct);
         app.MapDelete("/api/products/{id:int}", DeleteProductById);
 
@@ -50,17 +50,22 @@ public static class CatalogApi
         }
     }
 
-    private static async Task UpdateCatalogBrand([FromServices] CatalogService services, [FromBody] int id)
+    private static async Task<string> UpdateCatalogBrand([FromServices] CatalogService services,CatalogBrand request,int id)
     {
         try
         {
             // Change this to logger
-            var brand = await services.Repository.GetCatalogItem(id) ?? throw new KeyNotFoundException();
-            var update = await services.Repository.UpdateCatalogItem(brand);
+            var brand = await services.Repository.GetCatalogBrand(id) ?? throw new KeyNotFoundException();
+
+            brand.Brand = request.Brand;
+            brand.TypeId = request.TypeId;
+
+            var update = await services.Repository.UpdateCatalogBrand(brand);
             if (update == false)
             {
                 throw new KeyNotFoundException();
             }
+            return "Updated brand with id: " + id;
         }
         catch (Exception ex)
         {
@@ -74,7 +79,7 @@ public static class CatalogApi
         try
         {
             var newBrand = await services.Repository.CreateCatalogBrand(brand);
-            return  " newBrand.Brand: " + newBrand.Brand + " created.";
+            return  " newBrand.Brand: " + newBrand?.Brand + " created.";
         }
         catch (Exception ex)
         {
@@ -82,12 +87,13 @@ public static class CatalogApi
         }
     }
 
-    private static async Task DeleteCatalogType([FromServices] CatalogService services, int id)
+    private static async Task<string?> DeleteCatalogType([FromServices] CatalogService services, int id)
     {
         try
         {
             var brand = await services.Repository.GetCatalogType(id) ?? throw new KeyNotFoundException();// Change this to logger
             await services.Repository.DeleteCatalogItem(id);
+            return "Deleted type with id: " + id;
         }
         catch (Exception ex)
         {
@@ -96,27 +102,35 @@ public static class CatalogApi
 
     }
 
-    private static async Task<string> UpdateCatalogType([FromServices] CatalogService services, [FromBody] int id)
+    private static async Task<string> UpdateCatalogType([FromServices] CatalogService services, CatalogType request, int id)
     {
         try
         {
             var brand = await services.Repository.GetCatalogType(id) ?? throw new KeyNotFoundException();
-            var update = await services.Repository.UpdateCatalogType(brand) ?? throw new KeyNotFoundException();
+
+            brand.Type = request.Type;
+
+            var update = await services.Repository.UpdateCatalogType(brand) ?? throw new Exception("Error updating type with id: " + id); // Change this to logger
+
             return "Updated type with id: " + id;
         }
         catch (Exception ex)
         {
-            throw new Exception("Error updating type with id: " + id, ex); // Change this to logger
+            throw new Exception("Error:",ex); // Change this to logger
         }
     }
 
 
-    private static async Task<string> CreateCatalogType([FromServices] CatalogService services, [FromBody] CatalogType type)
+    private static async Task<string> CreateCatalogType([FromServices] CatalogService services, [FromBody] CatalogType request)
     {
         try
         {
-            var newType = await services.Repository.CreateCatalogType(type) ?? throw new KeyNotFoundException();
-            return "newType.Id: " + newType.Id + " newType.Type: " + newType.Type + " created.";
+            var result = await services.Repository.CreateCatalogType(request) ?? throw new KeyNotFoundException();
+            if (result == 0)
+            {
+                throw new KeyNotFoundException();
+            }
+            return "Type is created.";
         }
         catch (Exception ex)
         {
@@ -133,26 +147,42 @@ public static class CatalogApi
         return "Product is created.";
     }
 
-    private static async Task<CatalogItem> UpdateProduct([FromServices] CatalogService services,
-    [FromBody] CatalogItem product)
+    private static async Task<CatalogItem?> UpdateProduct([FromServices] CatalogService services,
+    [FromBody] CatalogItem product, int id)
     {
-        // This is stupid. I'm not going to do this.
-        await Task.CompletedTask;
-        var update = await services.Repository.UpdateCatalogItem(product);
+        try
+        {
+        var item = await services.Repository.GetCatalogItem(id) ?? throw new KeyNotFoundException();
+        
+        item.Name = product.Name;
+        item.Price = product.Price;
+        item.Description = product.Description;
+        item.ImageFile = product.ImageFile;
+        item.CatalogBrandId = product.CatalogBrandId;
+        item.CatalogTypeId = product.CatalogTypeId;
+
+        // implement mapper
+
+        var update = await services.Repository.UpdateCatalogItem(item);
         if (update == false)
         {
             throw new KeyNotFoundException();
         }
         return product;
+        }
+        catch (Exception ex)
+        {
+            throw new Exception("Error updating product with id: " + id, ex); // Change this to logger
+        }
     }
 
-    private static async Task<CatalogItem> DeleteProductById([FromServices] CatalogService services, int id)
+    private static async Task<string> DeleteProductById([FromServices] CatalogService services, int id)
     {
         try
         {
             var product = await services.Repository.GetCatalogItem(id) ?? throw new KeyNotFoundException();
             await services.Repository.DeleteCatalogItem(id);
-            return product;
+            return "Deleted product with id: " + id;
         }
         catch (Exception ex)
         {
@@ -161,12 +191,12 @@ public static class CatalogApi
     }
 
     //  Change this part
-    private static async Task<IEnumerable<CatalogType>> GetCatalogTypes([FromServices] CatalogService services)
+    private static async Task<IEnumerable<CatalogType?>> GetCatalogTypes([FromServices] CatalogService services)
     {
         var types = await services.Repository.GetCatalogTypes();
         return types;
     }
-    private static async Task<CatalogType> GetCatalogType([FromServices] CatalogService services, int id)
+    private static async Task<CatalogType?> GetCatalogType([FromServices] CatalogService services, int id)
     {
         try
         {
@@ -180,7 +210,7 @@ public static class CatalogApi
     }
     
     
-    private static async Task<IEnumerable<CatalogBrand>> GetCatalogBrands([FromServices] CatalogService services)
+    private static async Task<IEnumerable<CatalogBrand?>> GetCatalogBrands([FromServices] CatalogService services)
     {
         try{
         var brands = await services.Repository.GetCatalogBrands() ?? throw new KeyNotFoundException();
@@ -192,7 +222,7 @@ public static class CatalogApi
         }
     }
 
-    private static async Task<IEnumerable<CatalogItem>> GetProductsByBrandId(int brandId, [FromServices] CatalogService services)
+    private static async Task<IEnumerable<CatalogItem?>> GetProductsByBrandId(int brandId, [FromServices] CatalogService services)
     {
         try
         {
@@ -205,7 +235,7 @@ public static class CatalogApi
         }
     }
 
-    private static async Task<IEnumerable<CatalogItem>> GetProductsByBrandAndTypeId(
+    private static async Task<IEnumerable<CatalogItem?>> GetProductsByBrandAndTypeId(
         [FromServices] CatalogService services,
         int typeId,
          int brandId)
@@ -221,7 +251,7 @@ public static class CatalogApi
         }
     }
 
-    private static async Task<CatalogItem> GetCatalogItemsByName([FromServices] CatalogService services, string name)
+    private static async Task<CatalogItem?> GetCatalogItemsByName([FromServices] CatalogService services, string name)
     {
         try
         {
@@ -234,7 +264,7 @@ public static class CatalogApi
         }
     }
 
-    private static async Task<CatalogItem> GetCatalogItemsById([FromServices] CatalogService services, int id)
+    private static async Task<CatalogItem?> GetCatalogItemsById([FromServices] CatalogService services, int id)
     {
        try
         {
@@ -247,7 +277,7 @@ public static class CatalogApi
         }
     }
 
-    private static async Task<IEnumerable<CatalogItem>> GetCatalogItemsByIds([FromServices] CatalogService services, [FromBody] int[] ids)
+    private static async Task<IEnumerable<CatalogItem?>> GetCatalogItemsByIds([FromServices] CatalogService services, [FromBody] int[] ids)
     {
         try
         {
@@ -260,7 +290,7 @@ public static class CatalogApi
         }
     }
 
-    private static async Task<IEnumerable<CatalogItem>> GetAllCatalogItems([FromServices] CatalogService services)
+    private static async Task<IEnumerable<CatalogItem?>> GetAllCatalogItems([FromServices] CatalogService services)
     {
         try
         {

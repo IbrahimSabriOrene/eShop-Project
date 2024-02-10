@@ -21,9 +21,9 @@ namespace Basket.Api.Controllers
 
 
         [HttpGet("GetShoppingCartId/{userId}")]
-        public async Task<IActionResult> GetShoppingCartAsync(string userId)
+        public async Task<IActionResult> GetShoppingCartAsync(string userName)
         {
-            var cart = await _cart.GetShoppingCartAsync(userId);
+            var cart = await _cart.GetShoppingCartAsync(userName);
             return Ok(cart);
         }
 
@@ -34,16 +34,5 @@ namespace Basket.Api.Controllers
             return Ok(basket);
         }
 
-        [HttpPut]
-        public IActionResult Put()
-        {
-            return Ok();
-        }
-
-        [HttpDelete]
-        public IActionResult Delete()
-        {
-            return Ok();
-        }
     }
 }

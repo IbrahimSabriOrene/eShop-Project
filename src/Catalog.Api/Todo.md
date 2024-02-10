@@ -12,7 +12,7 @@
 - Catalog Item -> Properties of the item.
 ```
 
-- Create Catalog Type first
+- Create Catalog Type first -done
 - Move to Frontend for this. Make Admin Panel. Only admins can create new categories.
 - Only Admins have  access to create new brands.(For now)
 - Then Brand and lastly Items

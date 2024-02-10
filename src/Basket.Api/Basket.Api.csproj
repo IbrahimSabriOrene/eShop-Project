@@ -16,4 +16,6 @@
     <PackageReference Include="Microsoft.Extensions.Caching.StackExchangeRedis" Version="6.0.26"/>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3"/>
   </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
 </Project>

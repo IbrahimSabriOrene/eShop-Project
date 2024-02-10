@@ -7,7 +7,6 @@ namespace Catalog.Api;
 public static class DependencyInjection
 {
 
-    
     public static void AddCatalogServices(this IServiceCollection services)
     {
         services.AddScoped<CatalogRepository>();

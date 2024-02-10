@@ -3,6 +3,7 @@ using Catalog.Api.Models;
 using Catalog.Api.Helpers;
 using Microsoft.Extensions.Options;
 using System.Text;
+using Npgsql;
 
 namespace Catalog.Api.Repositories
 {
@@ -20,6 +21,7 @@ namespace Catalog.Api.Repositories
             GetCatalogItemsByBrand,
             GetCatalogItemsByType,
             GetCatalogBrands,
+            GetCatalogBrand,
             CreateCatalogBrand,
             GetCatalogTypes,
             CreateCatalogType,
@@ -30,7 +32,8 @@ namespace Catalog.Api.Repositories
             DeleteCatalogItem,
             GetCatalogItemsByTypeAndBrandId,
             GetCatalogItemByName,
-            GetCatalogItemByIds
+            GetCatalogItemByIds,
+            UpdateCatalogBrand
         }
         private static string GetQuery(CatalogQuery catalogQuery)
         {
@@ -46,7 +49,7 @@ namespace Catalog.Api.Repositories
                     sql.Append("SELECT * FROM CatalogItem WHERE Id = @id");
                     break;
                 case CatalogQuery.GetCatalogItemByIds:
-                   sql.Append("SELECT * FROM CatalogItem WHERE Id = ANY(@ids)");
+                    sql.Append("SELECT * FROM CatalogItem WHERE Id = ANY(@ids)");
                     break;
 
                 case CatalogQuery.CreateCatalogBrand:
@@ -60,6 +63,12 @@ namespace Catalog.Api.Repositories
                     break;
                 case CatalogQuery.GetCatalogBrands:
                     sql.Append("SELECT * FROM CatalogBrand");
+                    break;
+                case CatalogQuery.GetCatalogBrand:
+                    sql.Append("SELECT * FROM CatalogBrand WHERE Id = @id");
+                    break;
+                case CatalogQuery.UpdateCatalogBrand:
+                    sql.Append("UPDATE CatalogBrand SET Brand = @Brand WHERE Id = @Id");
                     break;
                 case CatalogQuery.GetCatalogTypes:
                     sql.Append("SELECT * FROM CatalogType");
@@ -142,11 +151,11 @@ namespace Catalog.Api.Repositories
             return await connection.QueryAsync<CatalogType>(GetQuery(CatalogQuery.GetCatalogTypes));
         }
 
-        public async Task<CatalogType?> CreateCatalogType(CatalogType catalogType)
+        public async Task<int?> CreateCatalogType(CatalogType catalogType)
         {
             using var connection = _dbContext.CreateConnection();
-            await connection.ExecuteAsync(GetQuery(CatalogQuery.CreateCatalogType), catalogType);
-            return catalogType;
+            var result = await connection.ExecuteAsync(GetQuery(CatalogQuery.CreateCatalogType), catalogType);
+            return result;
         }
 
         public async Task<CatalogType?> GetCatalogType(int id)
@@ -203,7 +212,19 @@ namespace Catalog.Api.Repositories
         public async Task<IEnumerable<CatalogItem?>> GetCatalogItemsByIds(int[] ids)
         {
             using var connection = _dbContext.CreateConnection();
-            return await connection.QueryAsync<CatalogItem>(GetQuery(CatalogQuery.GetCatalogItemByIds), new { ids });
+            return await connection.QueryAsync<CatalogItem>(GetQuery(CatalogQuery.GetCatalogItemByIds), new { ids }) ?? throw new NpgsqlException();
+        }
+
+        public async Task<CatalogBrand?> GetCatalogBrand(int id)
+        {
+            using var connection = _dbContext.CreateConnection();
+            return await connection.QueryFirstOrDefaultAsync<CatalogBrand>(GetQuery(CatalogQuery.GetCatalogBrand), new { id });
+        }
+
+        internal async Task<bool> UpdateCatalogBrand(CatalogBrand brand)
+        {
+            using var connection = _dbContext.CreateConnection();
+            return await connection.ExecuteAsync(GetQuery(CatalogQuery.UpdateCatalogBrand), brand) > 0;
         }
     }
 }
