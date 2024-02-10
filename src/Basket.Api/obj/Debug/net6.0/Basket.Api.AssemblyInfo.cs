@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Basket.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2cbe7ae197c3c172df9c2ad409d0024e15bf8664")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9d15bb8068bfa1aa2f04c7b663e496192404b26b")]
 [assembly: System.Reflection.AssemblyProductAttribute("Basket.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Basket.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

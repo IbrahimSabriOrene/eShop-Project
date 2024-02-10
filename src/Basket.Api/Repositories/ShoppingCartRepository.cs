@@ -25,7 +25,7 @@ namespace Basket.Api.Repositories
             var basket = await _redisCache.GetStringAsync(userId);
             var result = JsonConvert.DeserializeObject<ShoppingCart>(basket);
 
-            return result ?? throw new AppException("Couldn't find any basket");
+            return result ?? throw new AppException("Couldn't find any basket"); // We will made this custom app exception later.
         }
 
        

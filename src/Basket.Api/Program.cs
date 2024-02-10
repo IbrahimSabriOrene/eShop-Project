@@ -30,7 +30,7 @@ var app = builder.Build();
 app.UseMiddleware<ErrorHandlerMiddleware>();
 app.UseSwagger();
 app.UseSwaggerUI();
-//app.UseHttpsRedirection();
+app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();
 }

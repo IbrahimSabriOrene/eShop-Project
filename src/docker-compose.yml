@@ -1,0 +1,39 @@
+version: '3.4'
+
+
+services:
+  catalogdb:
+    image: postgres:latest
+    
+  basketdb:
+    image: redis/redis-stack-server:latest
+
+  pgadmin:
+    image: dpage/pgadmin4:latest
+
+  catalog.api:
+    image: ${DOCKER_REGISTRY-}catalogapi
+    build:
+      context: .
+      dockerfile: Catalog.API/Dockerfile
+
+  basket.api:
+    image: ${DOCKER_REGISTRY-}basketapi
+    build:
+      context: .
+      dockerfile: Basket.API/Dockerfile
+
+# eshop.web:
+#   image: ${DOCKER_REGISTRY-}eshopweb
+#   build:
+#     context: .
+#     dockerfile: Eshop.Web/Dockerfile
+
+  
+  # Further services
+
+  # MongoDB
+
+  # RabbitMQ
+
+  # Kafka

@@ -1,16 +1,23 @@
+FROM mcr.microsoft.com/dotnet/sdk:6.0 AS base
+
+WORKDIR /src
+EXPOSE 80
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
-WORKDIR /srcb
+ARG BUILD_CONFIGURATION=Release
+WORKDIR /src
+COPY ["Basket.Api/Basket.Api.csproj", "Basket.Api/"]
+
+RUN dotnet restore "Basket.Api/Basket.Api.csproj"
 COPY . .
-RUN dotnet restore "Basket.Api.csproj"
-RUN dotnet build "Basket.Api.csproj" -c Release -o /app/build
-RUN dotnet publish "Basket.Api.csproj" -c Release -o /app/publish 
+WORKDIR "/src/Basket.Api"
+RUN dotnet build "Basket.Api.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
+FROM build AS publish
+ARG BUILD_CONFIGURATION=Release
+RUN dotnet publish "Basket.Api.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=true
 
-FROM mcr.microsoft.com/dotnet/sdk:6.0
+FROM base AS final
 WORKDIR /app
-COPY --from=build /app/publish .
-
-EXPOSE 5000
-
+COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "Basket.Api.dll"]
