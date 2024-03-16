@@ -1,6 +1,7 @@
+Docker migration is finished. Fix the Catalog Api Endpoints
 
-Complete the docker migration of the project
+Add Api Rate Limit etc. in ocelot apigateway.
 
+Import EShop.Web to docker
 
-
-fix npsql connection
+Start writing the documentation.
