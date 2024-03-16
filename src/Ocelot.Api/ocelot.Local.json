@@ -1,0 +1,164 @@
+{
+    "Routes": [
+      {
+        "DownstreamPathTemplate": "/api/products",
+        "DownstreamScheme": "http",
+        "DownstreamHostAndPorts": [
+          {
+            "Host": "localhost",
+            "Port": "8000"
+          }
+        ],
+        "UpstreamPathTemplate": "/api/products",
+        "UpstreamHttpMethod": ["GET"]
+      },
+      {
+        "DownstreamPathTemplate": "/api/products/{id}",
+        "DownstreamScheme": "http",
+        "DownstreamHostAndPorts": [
+          {
+            "Host": "localhost",
+            "Port": "8000"
+          }
+        ],
+        "UpstreamPathTemplate": "/api/products/{id}",
+        "UpstreamHttpMethod": ["GET", "PUT", "DELETE"]
+      },
+      {
+        "DownstreamPathTemplate": "/api/brands",
+        "DownstreamScheme": "http",
+        "DownstreamHostAndPorts": [
+          {
+            "Host": "localhost",
+            "Port": "8000"
+          }
+        ],
+        "UpstreamPathTemplate": "/api/brands",
+        "UpstreamHttpMethod": ["GET"]
+      },
+      {
+        "DownstreamPathTemplate": "/api/brands/create",
+        "DownstreamScheme": "http",
+        "DownstreamHostAndPorts": [
+          {
+            "Host": "localhost",
+            "Port": "8000"
+          }
+        ],
+        "UpstreamPathTemplate": "/api/brands/create",
+        "UpstreamHttpMethod": ["POST"]
+      },
+      {
+        "DownstreamPathTemplate": "/api/brands/update/{id}",
+        "DownstreamScheme": "http",
+        "DownstreamHostAndPorts": [
+          {
+            "Host": "localhost",
+            "Port": "8000"
+          }
+        ],
+        "UpstreamPathTemplate": "/api/brands/update/{id}",
+        "UpstreamHttpMethod": ["PUT"]
+      },
+      {
+        "DownstreamPathTemplate": "/api/brands/delete/{id}",
+        "DownstreamScheme": "http",
+        "DownstreamHostAndPorts": [
+          {
+            "Host": "localhost",
+            "Port": "8000"
+          }
+        ],
+        "UpstreamPathTemplate": "/api/brands/delete/{id}",
+        "UpstreamHttpMethod": ["DELETE"]
+      },
+      {
+        "DownstreamPathTemplate": "/api/types",
+        "DownstreamScheme": "http",
+        "DownstreamHostAndPorts": [
+          {
+            "Host": "localhost",
+            "Port": "8000"
+          }
+        ],
+        "UpstreamPathTemplate": "/api/types",
+        "UpstreamHttpMethod": ["GET"]
+      },
+      {
+        "DownstreamPathTemplate": "/api/types/{id}",
+        "DownstreamScheme": "http",
+        "DownstreamHostAndPorts": [
+          {
+            "Host": "localhost",
+            "Port": "8000"
+          }
+        ],
+        "UpstreamPathTemplate": "/api/types/{id}",
+        "UpstreamHttpMethod": ["GET"]
+      },
+      {
+        "DownstreamPathTemplate": "/api/types/create",
+        "DownstreamScheme": "http",
+        "DownstreamHostAndPorts": [
+          {
+            "Host": "localhost",
+            "Port": "8000"
+          }
+        ],
+        "UpstreamPathTemplate": "/api/types/create",
+        "UpstreamHttpMethod": ["POST"]
+      },
+      {
+        "DownstreamPathTemplate": "/api/types/update/{id}",
+        "DownstreamScheme": "http",
+        "DownstreamHostAndPorts": [
+          {
+            "Host": "localhost",
+            "Port": "8000"
+          }
+        ],
+        "UpstreamPathTemplate": "/api/types/update/{id}",
+        "UpstreamHttpMethod": ["PUT"]
+      },
+      {
+        "DownstreamPathTemplate": "/api/types/delete/{id}",
+        "DownstreamScheme": "http",
+        "DownstreamHostAndPorts": [
+          {
+            "Host": "localhost",
+            "Port": "8000"
+          }
+        ],
+        "UpstreamPathTemplate": "/api/types/delete/{id}",
+        "UpstreamHttpMethod": ["DELETE"]
+      },
+      {
+        "DownstreamPathTemplate": "/ShoppingCartApi/GetShoppingCartId/{userId}",
+        "DownstreamScheme": "http",
+        "DownstreamHostAndPorts": [
+          {
+            "Host": "localhost",
+            "Port": "8001"
+          }
+        ],
+        "UpstreamPathTemplate": "/ShoppingCartApi/GetShoppingCartId/{userId}",
+        "UpstreamHttpMethod": ["GET"]
+      },
+      {
+        "DownstreamPathTemplate": "/ShoppingCartApi/UpdateShoppingCartAsync",
+        "DownstreamScheme": "http",
+        "DownstreamHostAndPorts": [
+          {
+            "Host": "localhost",
+            "Port": "8001"
+          }
+        ],
+        "UpstreamPathTemplate": "/ShoppingCartApi/UpdateShoppingCartAsync",
+        "UpstreamHttpMethod": ["POST"]
+      }
+    ],
+    "GlobalConfiguration": {
+      "BaseUrl": "http://localhost:5010"
+    }
+  }
+  
