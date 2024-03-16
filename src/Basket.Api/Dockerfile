@@ -1,23 +1,22 @@
-FROM mcr.microsoft.com/dotnet/sdk:6.0 AS base
-
-WORKDIR /src
+FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
+WORKDIR /app
 EXPOSE 80
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
-ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["Basket.Api/Basket.Api.csproj", "Basket.Api/"]
+COPY ["/Basket.Api/Basket.Api.csproj", "/src/Basket.Api/"]
 
 RUN dotnet restore "Basket.Api/Basket.Api.csproj"
 COPY . .
-WORKDIR "/src/Basket.Api"
-RUN dotnet build "Basket.Api.csproj" -c $BUILD_CONFIGURATION -o /app/build
+WORKDIR /src/Basket.Api
+
+
+RUN dotnet build "Basket.Api.csproj" -c Release -o /app/build
 
 FROM build AS publish
-ARG BUILD_CONFIGURATION=Release
-RUN dotnet publish "Basket.Api.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=true
+RUN dotnet publish "Basket.Api.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "Basket.Api.dll"]
+ENTRYPOINT ["dotnet", "Basket.Api.dll"]  # Assuming a web app or library

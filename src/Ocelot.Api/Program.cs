@@ -1,22 +1,46 @@
-var builder = WebApplication.CreateBuilder(args);
+using Ocelot.DependencyInjection;
+using Ocelot.Middleware;
 
-
-builder.Services.AddControllers();
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-
-var app = builder.Build();
-
-if (app.Environment.IsDevelopment())
+namespace Ocelot.Api
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    public class Program
+    {
+        private static void Main(string[] args)
+        {
+            var builder = WebApplication.CreateBuilder(args);
+            var config = builder.Configuration;
+            var services = builder.Services;
+
+            config.AddJsonFile($"ocelot.{builder.Environment.EnvironmentName}.json", true, true);
+
+            {
+
+                services.AddControllers();
+                services.AddEndpointsApiExplorer();
+                services.AddSwaggerGen();
+                services.AddOcelot(config);
+
+            }
+
+
+            var app = builder.Build();
+            if (app.Environment.IsDevelopment())
+            {
+                app.UseSwagger();
+                app.UseSwaggerUI();
+            }
+
+            app.UseHttpsRedirection();
+            app.UseRouting();
+            app.UseAuthorization();
+            app.UseEndpoints(endpoints =>
+                        {
+                            endpoints.MapControllers();
+                        });
+
+            app.UseOcelot().Wait();
+
+            app.Run();
+        }
+    }
 }
-
-app.UseHttpsRedirection();
-
-app.UseAuthorization();
-
-app.MapControllers();
-
-app.Run();

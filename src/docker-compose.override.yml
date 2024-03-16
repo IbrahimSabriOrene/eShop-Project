@@ -1,23 +1,23 @@
 version: '3.4'
 
 services:
+
+  basketdb:
+    container_name: basketdb
+    restart: always    
+    ports:
+        - "6379:6379"
+
   catalogdb:
     container_name: catalogdb
     restart: always
     environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=pass123
-      - POSTGRES_DB=CatalogDb
+      POSTGRES_PASSWORD: example
     ports:
         - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data/
 
-  basketdb:
-    container_name: basketdb
-    restart: always
-    ports:
-      - "6379:6379"
 
   pgadmin:
     container_name: pgadmin
@@ -26,30 +26,75 @@ services:
       - PGADMIN_DEFAULT_PASSWORD=admin1234
     restart: always
     ports:
-      - "5050:80"
+        - "5050:80"
     volumes:
       - pgadmin_data:/root/.pgadmin
 
+  portainer:
+    container_name: portainer
+    restart: always
+    ports:
+      - "8080:8000"
+      - "9000:9000"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - portainer_data:/data
+
   catalog.api:
-    container_name: catalogapi
+    container_name: catalog.api
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - "DatabaseSettings:ConnectionString=postgres"
+      - "DatabaseSettings:ConnectionString=Server=catalogdb;Port=5432;Database=CatalogDb;User Id=postgres;Password=pass123;"
+      - "ElasticConfiguration:Uri=http://elasticsearch:9200"
     depends_on:
       - catalogdb
     ports:
-      - "8003:80"
+      - "8000:80"
 
   basket.api:
-    container_name: basketapi
+    container_name: basket.api
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - "CacheSettings:ConnectionString=localhost:6379"
+      - "CacheSettings:ConnectionString=basketdb:6379"
+      - "ElasticConfiguration:Uri=http://elasticsearch:9200"
     depends_on:
       - basketdb
     ports:
-      - "8002:80"
+      - "8001:80"
 
-volumes:
-  postgres_data:
-  pgadmin_data:
+
+  ocelotapigw:
+    container_name: ocelotapigw
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - "ElasticConfiguration:Uri=http://elasticsearch:9200"
+    depends_on:
+        - catalog.api
+        - basket.api
+    ports:
+      - "8010:80"
+
+
+
+  elasticsearch:
+    container_name: elasticsearch
+    environment:
+        - xpack.monitoring.enabled=true
+        - xpack.watcher.enabled=false
+        - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+        - discovery.type=single-node
+    ports:
+        - "9200:9200"
+    volumes:
+        - elasticsearch-data:/usr/share/elasticsearch/data   
+
+  kibana:
+    container_name: kibana
+    environment:        
+        - ELASTICSEARCH_URL=http://elasticsearch:9200
+    depends_on:
+        - elasticsearch
+    ports:
+        - "5601:5601"  
+        
+  

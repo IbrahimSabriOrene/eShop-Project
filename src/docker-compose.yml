@@ -1,39 +1,50 @@
 version: '3.4'
 
-
 services:
   catalogdb:
-    image: postgres:latest
-    
+    image: postgres
+
   basketdb:
-    image: redis/redis-stack-server:latest
+    image: redis:alpine
+
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
 
   pgadmin:
-    image: dpage/pgadmin4:latest
+    image: dpage/pgadmin4  
+
+  portainer:
+    image: portainer/portainer-ce
 
   catalog.api:
     image: ${DOCKER_REGISTRY-}catalogapi
     build:
       context: .
-      dockerfile: Catalog.API/Dockerfile
+      dockerfile: Catalog.Api/Dockerfile
 
   basket.api:
     image: ${DOCKER_REGISTRY-}basketapi
     build:
       context: .
-      dockerfile: Basket.API/Dockerfile
-
-# eshop.web:
-#   image: ${DOCKER_REGISTRY-}eshopweb
-#   build:
-#     context: .
-#     dockerfile: Eshop.Web/Dockerfile
+      dockerfile: Basket.Api/Dockerfile
 
   
-  # Further services
+  ocelotapigw:
+    image: ${DOCKER_REGISTRY-}ocelotapigw
+    build:
+      context: .
+      dockerfile: Ocelot.Api/Dockerfile  
 
-  # MongoDB
+  
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.9.2
 
-  # RabbitMQ
+  kibana:
+    image: docker.elastic.co/kibana/kibana:7.9.2
 
-  # Kafka
+
+volumes:
+  portainer_data:
+  postgres_data:
+  pgadmin_data:
+  elasticsearch-data:

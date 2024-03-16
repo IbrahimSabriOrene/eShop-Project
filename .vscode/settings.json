@@ -2,8 +2,10 @@
     "cSpell.words": [
         "Avalonia",
         "basketdb",
+        "catalogdb",
         "datname",
         "Npgsql",
-        "Serilog"
+        "Serilog",
+        "USERID"
     ]
 }

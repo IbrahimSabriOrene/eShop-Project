@@ -116,7 +116,7 @@ public static class CatalogApi
         }
         catch (Exception ex)
         {
-            throw new Exception("Error:",ex); // Change this to logger
+            throw new Exception("Error:",ex); //logger via seri log
         }
     }
 

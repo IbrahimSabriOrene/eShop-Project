@@ -20,7 +20,7 @@ namespace Basket.Api.Controllers
         }
 
 
-        [HttpGet("GetShoppingCartId/{userId}")]
+        [HttpGet("GetShoppingCartId/{userName}")]
         public async Task<IActionResult> GetShoppingCartAsync(string userName)
         {
             var cart = await _cart.GetShoppingCartAsync(userName);

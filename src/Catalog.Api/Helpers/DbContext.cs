@@ -3,6 +3,7 @@ using Dapper;
 using Microsoft.Extensions.Options;
 using Npgsql;
 
+
 namespace Catalog.Api.Helpers;
 public class DbContext
 {
@@ -10,7 +11,7 @@ public class DbContext
 
     public DbContext(IOptions<DbSettings> dbSettings)
     {
-        _dbSettings = dbSettings.Value;
+        _dbSettings = dbSettings.Value ?? throw new ArgumentNullException(nameof(dbSettings));
     }
 
     public IDbConnection CreateConnection()
@@ -38,7 +39,6 @@ public class DbContext
             await connection.ExecuteAsync(sql);
         }
     }
-
     private async Task _initTables()
     {
         using var connection = CreateConnection();
