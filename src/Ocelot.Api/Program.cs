@@ -12,7 +12,6 @@ namespace Ocelot.Api
             var services = builder.Services;
 
             config.AddJsonFile($"ocelot.{builder.Environment.EnvironmentName}.json", true, true);
-
             {
 
                 services.AddControllers();

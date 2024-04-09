@@ -1,15 +1,10 @@
-foreach product in productModel something
+---
+Add Update Product
+Add Delete or Archive Product
+Add Category Page
+Add Brand Page
 
-render each product in the page.
-each product has its own values.
+Fix Sidebar with _layoutAdmin or partial view sth.
 
-
-
--create admin panel
-
-- Admin has those api calls extra
-- Create
-- Update
-
-
-- Regular user can not create or Update a Type or Brand
+Add Second Navbar For Categories
+---

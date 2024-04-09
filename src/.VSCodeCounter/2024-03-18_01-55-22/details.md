@@ -1,0 +1,263 @@
+# Details
+
+Date : 2024-03-18 01:55:22
+
+Directory c:\\Users\\PC-1\\Projects\\eShop-Project\\src
+
+Total : 248 files,  82475 codes, 4557 comments, 14776 blanks, all 101808 lines
+
+[Summary](results.md) / Details / [Diff Summary](diff.md) / [Diff Details](diff-details.md)
+
+## Files
+| filename | language | code | comment | blank | total |
+| :--- | :--- | ---: | ---: | ---: | ---: |
+| [.dockerignore](/.dockerignore) | Ignore | 25 | 0 | 0 | 25 |
+| [.idea/.idea.src/.idea/encodings.xml](/.idea/.idea.src/.idea/encodings.xml) | XML | 4 | 0 | 0 | 4 |
+| [.idea/.idea.src/.idea/indexLayout.xml](/.idea/.idea.src/.idea/indexLayout.xml) | XML | 10 | 0 | 0 | 10 |
+| [.idea/.idea.src/.idea/vcs.xml](/.idea/.idea.src/.idea/vcs.xml) | XML | 6 | 0 | 0 | 6 |
+| [Basket.Api/Basket.Api.csproj](/Basket.Api/Basket.Api.csproj) | XML | 21 | 0 | 0 | 21 |
+| [Basket.Api/Controllers/ShoppingCartApiController.cs](/Basket.Api/Controllers/ShoppingCartApiController.cs) | C# | 30 | 0 | 8 | 38 |
+| [Basket.Api/DependencyInjection.cs](/Basket.Api/DependencyInjection.cs) | C# | 14 | 0 | 1 | 15 |
+| [Basket.Api/Dockerfile](/Basket.Api/Dockerfile) | Docker | 16 | 0 | 7 | 23 |
+| [Basket.Api/Entities/ShoppingCart.cs](/Basket.Api/Entities/ShoppingCart.cs) | C# | 24 | 1 | 3 | 28 |
+| [Basket.Api/Entities/ShoppingCartItems.cs](/Basket.Api/Entities/ShoppingCartItems.cs) | C# | 11 | 0 | 0 | 11 |
+| [Basket.Api/Helpers/AppException.cs](/Basket.Api/Helpers/AppException.cs) | C# | 11 | 0 | 4 | 15 |
+| [Basket.Api/Helpers/ErrorHandlingMiddleware.cs](/Basket.Api/Helpers/ErrorHandlingMiddleware.cs) | C# | 37 | 3 | 6 | 46 |
+| [Basket.Api/Program.cs](/Basket.Api/Program.cs) | C# | 44 | 0 | 9 | 53 |
+| [Basket.Api/Properties/launchSettings.json](/Basket.Api/Properties/launchSettings.json) | JSON | 31 | 0 | 1 | 32 |
+| [Basket.Api/Repositories/IShoppingCartRepository.cs](/Basket.Api/Repositories/IShoppingCartRepository.cs) | C# | 9 | 0 | 1 | 10 |
+| [Basket.Api/Repositories/ShoppingCartRepository.cs](/Basket.Api/Repositories/ShoppingCartRepository.cs) | C# | 29 | 0 | 14 | 43 |
+| [Basket.Api/Services/IShoppingCartService.cs](/Basket.Api/Services/IShoppingCartService.cs) | C# | 9 | 0 | 1 | 10 |
+| [Basket.Api/Services/ShoppingCartService.cs](/Basket.Api/Services/ShoppingCartService.cs) | C# | 41 | 0 | 8 | 49 |
+| [Basket.Api/Todo.md](/Basket.Api/Todo.md) | Markdown | 4 | 0 | 2 | 6 |
+| [Basket.Api/appsettings.Development.json](/Basket.Api/appsettings.Development.json) | JSON | 8 | 0 | 1 | 9 |
+| [Basket.Api/appsettings.json](/Basket.Api/appsettings.json) | JSON | 36 | 0 | 1 | 37 |
+| [Basket.Api/bin/Debug/net6.0/Basket.Api.deps.json](/Basket.Api/bin/Debug/net6.0/Basket.Api.deps.json) | JSON | 1,058 | 0 | 0 | 1,058 |
+| [Basket.Api/bin/Debug/net6.0/Basket.Api.runtimeconfig.json](/Basket.Api/bin/Debug/net6.0/Basket.Api.runtimeconfig.json) | JSON | 19 | 0 | 0 | 19 |
+| [Basket.Api/bin/Debug/net6.0/appsettings.Development.json](/Basket.Api/bin/Debug/net6.0/appsettings.Development.json) | JSON | 8 | 0 | 1 | 9 |
+| [Basket.Api/bin/Debug/net6.0/appsettings.json](/Basket.Api/bin/Debug/net6.0/appsettings.json) | JSON | 36 | 0 | 1 | 37 |
+| [Basket.Api/bin/Release/net6.0/Basket.Api.deps.json](/Basket.Api/bin/Release/net6.0/Basket.Api.deps.json) | JSON | 1,058 | 0 | 0 | 1,058 |
+| [Basket.Api/bin/Release/net6.0/Basket.Api.runtimeconfig.json](/Basket.Api/bin/Release/net6.0/Basket.Api.runtimeconfig.json) | JSON | 20 | 0 | 0 | 20 |
+| [Basket.Api/bin/Release/net6.0/appsettings.Development.json](/Basket.Api/bin/Release/net6.0/appsettings.Development.json) | JSON | 8 | 0 | 1 | 9 |
+| [Basket.Api/bin/Release/net6.0/appsettings.json](/Basket.Api/bin/Release/net6.0/appsettings.json) | JSON | 40 | 0 | 0 | 40 |
+| [Basket.Api/bin/Release/net6.0/publish/Basket.Api.deps.json](/Basket.Api/bin/Release/net6.0/publish/Basket.Api.deps.json) | JSON | 1,058 | 0 | 0 | 1,058 |
+| [Basket.Api/bin/Release/net6.0/publish/Basket.Api.runtimeconfig.json](/Basket.Api/bin/Release/net6.0/publish/Basket.Api.runtimeconfig.json) | JSON | 20 | 0 | 0 | 20 |
+| [Basket.Api/bin/Release/net6.0/publish/appsettings.Development.json](/Basket.Api/bin/Release/net6.0/publish/appsettings.Development.json) | JSON | 8 | 0 | 1 | 9 |
+| [Basket.Api/bin/Release/net6.0/publish/appsettings.json](/Basket.Api/bin/Release/net6.0/publish/appsettings.json) | JSON | 40 | 0 | 0 | 40 |
+| [Basket.Api/obj/Basket.Api.csproj.nuget.dgspec.json](/Basket.Api/obj/Basket.Api.csproj.nuget.dgspec.json) | JSON | 124 | 0 | 0 | 124 |
+| [Basket.Api/obj/Basket.Api.csproj.nuget.g.props](/Basket.Api/obj/Basket.Api.csproj.nuget.g.props) | XML | 22 | 0 | 0 | 22 |
+| [Basket.Api/obj/Basket.Api.csproj.nuget.g.targets](/Basket.Api/obj/Basket.Api.csproj.nuget.g.targets) | XML | 9 | 0 | 0 | 9 |
+| [Basket.Api/obj/Debug/net6.0/.NETCoreApp,Version=v6.0.AssemblyAttributes.cs](/Basket.Api/obj/Debug/net6.0/.NETCoreApp,Version=v6.0.AssemblyAttributes.cs) | C# | 3 | 1 | 1 | 5 |
+| [Basket.Api/obj/Debug/net6.0/Basket.Api.AssemblyInfo.cs](/Basket.Api/obj/Debug/net6.0/Basket.Api.AssemblyInfo.cs) | C# | 9 | 9 | 5 | 23 |
+| [Basket.Api/obj/Debug/net6.0/Basket.Api.GeneratedMSBuildEditorConfig.editorconfig](/Basket.Api/obj/Debug/net6.0/Basket.Api.GeneratedMSBuildEditorConfig.editorconfig) | EditorConfig | 19 | 0 | 1 | 20 |
+| [Basket.Api/obj/Debug/net6.0/Basket.Api.GlobalUsings.g.cs](/Basket.Api/obj/Debug/net6.0/Basket.Api.GlobalUsings.g.cs) | C# | 16 | 1 | 1 | 18 |
+| [Basket.Api/obj/Debug/net6.0/Basket.Api.MvcApplicationPartsAssemblyInfo.cs](/Basket.Api/obj/Debug/net6.0/Basket.Api.MvcApplicationPartsAssemblyInfo.cs) | C# | 3 | 9 | 5 | 17 |
+| [Basket.Api/obj/Debug/net6.0/Basket.Api.sourcelink.json](/Basket.Api/obj/Debug/net6.0/Basket.Api.sourcelink.json) | JSON | 1 | 0 | 0 | 1 |
+| [Basket.Api/obj/Debug/net6.0/staticwebassets.build.json](/Basket.Api/obj/Debug/net6.0/staticwebassets.build.json) | JSON | 11 | 0 | 0 | 11 |
+| [Basket.Api/obj/Debug/net6.0/staticwebassets/msbuild.build.Basket.Api.props](/Basket.Api/obj/Debug/net6.0/staticwebassets/msbuild.build.Basket.Api.props) | XML | 3 | 0 | 0 | 3 |
+| [Basket.Api/obj/Debug/net6.0/staticwebassets/msbuild.buildMultiTargeting.Basket.Api.props](/Basket.Api/obj/Debug/net6.0/staticwebassets/msbuild.buildMultiTargeting.Basket.Api.props) | XML | 3 | 0 | 0 | 3 |
+| [Basket.Api/obj/Debug/net6.0/staticwebassets/msbuild.buildTransitive.Basket.Api.props](/Basket.Api/obj/Debug/net6.0/staticwebassets/msbuild.buildTransitive.Basket.Api.props) | XML | 3 | 0 | 0 | 3 |
+| [Basket.Api/obj/Release/net6.0/.NETCoreApp,Version=v6.0.AssemblyAttributes.cs](/Basket.Api/obj/Release/net6.0/.NETCoreApp,Version=v6.0.AssemblyAttributes.cs) | C# | 3 | 1 | 1 | 5 |
+| [Basket.Api/obj/Release/net6.0/Basket.Api.AssemblyInfo.cs](/Basket.Api/obj/Release/net6.0/Basket.Api.AssemblyInfo.cs) | C# | 9 | 9 | 5 | 23 |
+| [Basket.Api/obj/Release/net6.0/Basket.Api.GeneratedMSBuildEditorConfig.editorconfig](/Basket.Api/obj/Release/net6.0/Basket.Api.GeneratedMSBuildEditorConfig.editorconfig) | EditorConfig | 19 | 0 | 1 | 20 |
+| [Basket.Api/obj/Release/net6.0/Basket.Api.GlobalUsings.g.cs](/Basket.Api/obj/Release/net6.0/Basket.Api.GlobalUsings.g.cs) | C# | 16 | 1 | 1 | 18 |
+| [Basket.Api/obj/Release/net6.0/Basket.Api.MvcApplicationPartsAssemblyInfo.cs](/Basket.Api/obj/Release/net6.0/Basket.Api.MvcApplicationPartsAssemblyInfo.cs) | C# | 3 | 9 | 5 | 17 |
+| [Basket.Api/obj/Release/net6.0/Basket.Api.sourcelink.json](/Basket.Api/obj/Release/net6.0/Basket.Api.sourcelink.json) | JSON | 1 | 0 | 0 | 1 |
+| [Basket.Api/obj/Release/net6.0/staticwebassets.build.json](/Basket.Api/obj/Release/net6.0/staticwebassets.build.json) | JSON | 11 | 0 | 0 | 11 |
+| [Basket.Api/obj/Release/net6.0/staticwebassets.publish.json](/Basket.Api/obj/Release/net6.0/staticwebassets.publish.json) | JSON | 11 | 0 | 0 | 11 |
+| [Basket.Api/obj/Release/net6.0/staticwebassets/msbuild.build.Basket.Api.props](/Basket.Api/obj/Release/net6.0/staticwebassets/msbuild.build.Basket.Api.props) | XML | 3 | 0 | 0 | 3 |
+| [Basket.Api/obj/Release/net6.0/staticwebassets/msbuild.buildMultiTargeting.Basket.Api.props](/Basket.Api/obj/Release/net6.0/staticwebassets/msbuild.buildMultiTargeting.Basket.Api.props) | XML | 3 | 0 | 0 | 3 |
+| [Basket.Api/obj/Release/net6.0/staticwebassets/msbuild.buildTransitive.Basket.Api.props](/Basket.Api/obj/Release/net6.0/staticwebassets/msbuild.buildTransitive.Basket.Api.props) | XML | 3 | 0 | 0 | 3 |
+| [Basket.Api/obj/project.assets.json](/Basket.Api/obj/project.assets.json) | JSON | 3,973 | 0 | 0 | 3,973 |
+| [Basket.Api/obj/project.packagespec.json](/Basket.Api/obj/project.packagespec.json) | JSON | 1 | 0 | 0 | 1 |
+| [Catalog.Api/Catalog.Api.csproj](/Catalog.Api/Catalog.Api.csproj) | XML | 17 | 0 | 0 | 17 |
+| [Catalog.Api/Controllers/CatalogApi.cs](/Catalog.Api/Controllers/CatalogApi.cs) | C# | 265 | 7 | 43 | 315 |
+| [Catalog.Api/DependencyInjection.cs](/Catalog.Api/DependencyInjection.cs) | C# | 13 | 0 | 4 | 17 |
+| [Catalog.Api/Helpers/DbContext.cs](/Catalog.Api/Helpers/DbContext.cs) | C# | 65 | 0 | 11 | 76 |
+| [Catalog.Api/Helpers/DbSettings.cs](/Catalog.Api/Helpers/DbSettings.cs) | C# | 8 | 1 | 1 | 10 |
+| [Catalog.Api/Models/CatalogBrand.cs](/Catalog.Api/Models/CatalogBrand.cs) | C# | 13 | 0 | 3 | 16 |
+| [Catalog.Api/Models/CatalogItem.cs](/Catalog.Api/Models/CatalogItem.cs) | C# | 30 | 0 | 11 | 41 |
+| [Catalog.Api/Models/CatalogType.cs](/Catalog.Api/Models/CatalogType.cs) | C# | 11 | 0 | 1 | 12 |
+| [Catalog.Api/Program.cs](/Catalog.Api/Program.cs) | C# | 41 | 0 | 9 | 50 |
+| [Catalog.Api/Properties/launchSettings.json](/Catalog.Api/Properties/launchSettings.json) | JSON | 31 | 0 | 1 | 32 |
+| [Catalog.Api/Repositories/CatalogRepository.cs](/Catalog.Api/Repositories/CatalogRepository.cs) | C# | 197 | 1 | 33 | 231 |
+| [Catalog.Api/Services/CatalogService.cs](/Catalog.Api/Services/CatalogService.cs) | C# | 12 | 0 | 2 | 14 |
+| [Catalog.Api/Todo.md](/Catalog.Api/Todo.md) | Markdown | 18 | 0 | 7 | 25 |
+| [Catalog.Api/appsettings.Development.json](/Catalog.Api/appsettings.Development.json) | JSON | 8 | 0 | 1 | 9 |
+| [Catalog.Api/appsettings.json](/Catalog.Api/appsettings.json) | JSON | 17 | 0 | 1 | 18 |
+| [Catalog.Api/bin/Debug/net6.0/Catalog.Api.deps.json](/Catalog.Api/bin/Debug/net6.0/Catalog.Api.deps.json) | JSON | 1,273 | 0 | 0 | 1,273 |
+| [Catalog.Api/bin/Debug/net6.0/Catalog.Api.runtimeconfig.json](/Catalog.Api/bin/Debug/net6.0/Catalog.Api.runtimeconfig.json) | JSON | 19 | 0 | 0 | 19 |
+| [Catalog.Api/bin/Debug/net6.0/appsettings.Development.json](/Catalog.Api/bin/Debug/net6.0/appsettings.Development.json) | JSON | 8 | 0 | 1 | 9 |
+| [Catalog.Api/bin/Debug/net6.0/appsettings.json](/Catalog.Api/bin/Debug/net6.0/appsettings.json) | JSON | 17 | 0 | 1 | 18 |
+| [Catalog.Api/bin/Release/net6.0/Catalog.Api.deps.json](/Catalog.Api/bin/Release/net6.0/Catalog.Api.deps.json) | JSON | 1,273 | 0 | 0 | 1,273 |
+| [Catalog.Api/bin/Release/net6.0/Catalog.Api.runtimeconfig.json](/Catalog.Api/bin/Release/net6.0/Catalog.Api.runtimeconfig.json) | JSON | 20 | 0 | 0 | 20 |
+| [Catalog.Api/bin/Release/net6.0/appsettings.Development.json](/Catalog.Api/bin/Release/net6.0/appsettings.Development.json) | JSON | 8 | 0 | 1 | 9 |
+| [Catalog.Api/bin/Release/net6.0/appsettings.json](/Catalog.Api/bin/Release/net6.0/appsettings.json) | JSON | 17 | 0 | 1 | 18 |
+| [Catalog.Api/bin/Release/net6.0/publish/Catalog.Api.deps.json](/Catalog.Api/bin/Release/net6.0/publish/Catalog.Api.deps.json) | JSON | 1,273 | 0 | 0 | 1,273 |
+| [Catalog.Api/bin/Release/net6.0/publish/Catalog.Api.runtimeconfig.json](/Catalog.Api/bin/Release/net6.0/publish/Catalog.Api.runtimeconfig.json) | JSON | 20 | 0 | 0 | 20 |
+| [Catalog.Api/bin/Release/net6.0/publish/appsettings.Development.json](/Catalog.Api/bin/Release/net6.0/publish/appsettings.Development.json) | JSON | 8 | 0 | 1 | 9 |
+| [Catalog.Api/bin/Release/net6.0/publish/appsettings.json](/Catalog.Api/bin/Release/net6.0/publish/appsettings.json) | JSON | 17 | 0 | 1 | 18 |
+| [Catalog.Api/obj/Catalog.Api.csproj.nuget.dgspec.json](/Catalog.Api/obj/Catalog.Api.csproj.nuget.dgspec.json) | JSON | 108 | 0 | 0 | 108 |
+| [Catalog.Api/obj/Catalog.Api.csproj.nuget.g.props](/Catalog.Api/obj/Catalog.Api.csproj.nuget.g.props) | XML | 22 | 0 | 0 | 22 |
+| [Catalog.Api/obj/Catalog.Api.csproj.nuget.g.targets](/Catalog.Api/obj/Catalog.Api.csproj.nuget.g.targets) | XML | 6 | 0 | 0 | 6 |
+| [Catalog.Api/obj/Debug/net6.0/.NETCoreApp,Version=v6.0.AssemblyAttributes.cs](/Catalog.Api/obj/Debug/net6.0/.NETCoreApp,Version=v6.0.AssemblyAttributes.cs) | C# | 3 | 1 | 1 | 5 |
+| [Catalog.Api/obj/Debug/net6.0/Catalog.Api.AssemblyInfo.cs](/Catalog.Api/obj/Debug/net6.0/Catalog.Api.AssemblyInfo.cs) | C# | 9 | 9 | 5 | 23 |
+| [Catalog.Api/obj/Debug/net6.0/Catalog.Api.GeneratedMSBuildEditorConfig.editorconfig](/Catalog.Api/obj/Debug/net6.0/Catalog.Api.GeneratedMSBuildEditorConfig.editorconfig) | EditorConfig | 19 | 0 | 1 | 20 |
+| [Catalog.Api/obj/Debug/net6.0/Catalog.Api.GlobalUsings.g.cs](/Catalog.Api/obj/Debug/net6.0/Catalog.Api.GlobalUsings.g.cs) | C# | 16 | 1 | 1 | 18 |
+| [Catalog.Api/obj/Debug/net6.0/Catalog.Api.MvcApplicationPartsAssemblyInfo.cs](/Catalog.Api/obj/Debug/net6.0/Catalog.Api.MvcApplicationPartsAssemblyInfo.cs) | C# | 3 | 9 | 5 | 17 |
+| [Catalog.Api/obj/Debug/net6.0/Catalog.Api.sourcelink.json](/Catalog.Api/obj/Debug/net6.0/Catalog.Api.sourcelink.json) | JSON | 1 | 0 | 0 | 1 |
+| [Catalog.Api/obj/Debug/net6.0/staticwebassets.build.json](/Catalog.Api/obj/Debug/net6.0/staticwebassets.build.json) | JSON | 11 | 0 | 0 | 11 |
+| [Catalog.Api/obj/Debug/net6.0/staticwebassets/msbuild.build.Catalog.Api.props](/Catalog.Api/obj/Debug/net6.0/staticwebassets/msbuild.build.Catalog.Api.props) | XML | 3 | 0 | 0 | 3 |
+| [Catalog.Api/obj/Debug/net6.0/staticwebassets/msbuild.buildMultiTargeting.Catalog.Api.props](/Catalog.Api/obj/Debug/net6.0/staticwebassets/msbuild.buildMultiTargeting.Catalog.Api.props) | XML | 3 | 0 | 0 | 3 |
+| [Catalog.Api/obj/Debug/net6.0/staticwebassets/msbuild.buildTransitive.Catalog.Api.props](/Catalog.Api/obj/Debug/net6.0/staticwebassets/msbuild.buildTransitive.Catalog.Api.props) | XML | 3 | 0 | 0 | 3 |
+| [Catalog.Api/obj/Release/net6.0/.NETCoreApp,Version=v6.0.AssemblyAttributes.cs](/Catalog.Api/obj/Release/net6.0/.NETCoreApp,Version=v6.0.AssemblyAttributes.cs) | C# | 3 | 1 | 1 | 5 |
+| [Catalog.Api/obj/Release/net6.0/Catalog.Api.AssemblyInfo.cs](/Catalog.Api/obj/Release/net6.0/Catalog.Api.AssemblyInfo.cs) | C# | 9 | 9 | 5 | 23 |
+| [Catalog.Api/obj/Release/net6.0/Catalog.Api.GeneratedMSBuildEditorConfig.editorconfig](/Catalog.Api/obj/Release/net6.0/Catalog.Api.GeneratedMSBuildEditorConfig.editorconfig) | EditorConfig | 19 | 0 | 1 | 20 |
+| [Catalog.Api/obj/Release/net6.0/Catalog.Api.GlobalUsings.g.cs](/Catalog.Api/obj/Release/net6.0/Catalog.Api.GlobalUsings.g.cs) | C# | 16 | 1 | 1 | 18 |
+| [Catalog.Api/obj/Release/net6.0/Catalog.Api.MvcApplicationPartsAssemblyInfo.cs](/Catalog.Api/obj/Release/net6.0/Catalog.Api.MvcApplicationPartsAssemblyInfo.cs) | C# | 3 | 9 | 5 | 17 |
+| [Catalog.Api/obj/Release/net6.0/Catalog.Api.sourcelink.json](/Catalog.Api/obj/Release/net6.0/Catalog.Api.sourcelink.json) | JSON | 1 | 0 | 0 | 1 |
+| [Catalog.Api/obj/Release/net6.0/staticwebassets.build.json](/Catalog.Api/obj/Release/net6.0/staticwebassets.build.json) | JSON | 11 | 0 | 0 | 11 |
+| [Catalog.Api/obj/Release/net6.0/staticwebassets.publish.json](/Catalog.Api/obj/Release/net6.0/staticwebassets.publish.json) | JSON | 11 | 0 | 0 | 11 |
+| [Catalog.Api/obj/Release/net6.0/staticwebassets/msbuild.build.Catalog.Api.props](/Catalog.Api/obj/Release/net6.0/staticwebassets/msbuild.build.Catalog.Api.props) | XML | 3 | 0 | 0 | 3 |
+| [Catalog.Api/obj/Release/net6.0/staticwebassets/msbuild.buildMultiTargeting.Catalog.Api.props](/Catalog.Api/obj/Release/net6.0/staticwebassets/msbuild.buildMultiTargeting.Catalog.Api.props) | XML | 3 | 0 | 0 | 3 |
+| [Catalog.Api/obj/Release/net6.0/staticwebassets/msbuild.buildTransitive.Catalog.Api.props](/Catalog.Api/obj/Release/net6.0/staticwebassets/msbuild.buildTransitive.Catalog.Api.props) | XML | 3 | 0 | 0 | 3 |
+| [Catalog.Api/obj/project.assets.json](/Catalog.Api/obj/project.assets.json) | JSON | 4,879 | 0 | 0 | 4,879 |
+| [Catalog.Api/obj/project.packagespec.json](/Catalog.Api/obj/project.packagespec.json) | JSON | 1 | 0 | 0 | 1 |
+| [EShop.Web/EShop.Web.csproj](/EShop.Web/EShop.Web.csproj) | XML | 14 | 0 | 0 | 14 |
+| [EShop.Web/Models/Catalog/CatalogBrandModel.cs](/EShop.Web/Models/Catalog/CatalogBrandModel.cs) | C# | 13 | 0 | 3 | 16 |
+| [EShop.Web/Models/Catalog/CatalogItemModel.cs](/EShop.Web/Models/Catalog/CatalogItemModel.cs) | C# | 19 | 0 | 2 | 21 |
+| [EShop.Web/Models/Catalog/CatalogTypeModel.cs](/EShop.Web/Models/Catalog/CatalogTypeModel.cs) | C# | 12 | 0 | 1 | 13 |
+| [EShop.Web/Models/ShoppingCart.cs](/EShop.Web/Models/ShoppingCart.cs) | C# | 9 | 0 | 3 | 12 |
+| [EShop.Web/Models/ShoppingCartItems.cs](/EShop.Web/Models/ShoppingCartItems.cs) | C# | 11 | 0 | 0 | 11 |
+| [EShop.Web/Pages/Account/Login.cshtml](/EShop.Web/Pages/Account/Login.cshtml) | ASP.NET Razor | 5 | 0 | 2 | 7 |
+| [EShop.Web/Pages/Account/Login.cshtml.cs](/EShop.Web/Pages/Account/Login.cshtml.cs) | C# | 14 | 0 | 5 | 19 |
+| [EShop.Web/Pages/Account/Logout.cshtml](/EShop.Web/Pages/Account/Logout.cshtml) | ASP.NET Razor | 4 | 0 | 2 | 6 |
+| [EShop.Web/Pages/Account/Logout.cshtml.cs](/EShop.Web/Pages/Account/Logout.cshtml.cs) | C# | 19 | 0 | 5 | 24 |
+| [EShop.Web/Pages/Account/Profile.cshtml](/EShop.Web/Pages/Account/Profile.cshtml) | ASP.NET Razor | 23 | 0 | 3 | 26 |
+| [EShop.Web/Pages/Account/Profile.cshtml.cs](/EShop.Web/Pages/Account/Profile.cshtml.cs) | C# | 23 | 0 | 6 | 29 |
+| [EShop.Web/Pages/Admin/AdminPanel.cshtml](/EShop.Web/Pages/Admin/AdminPanel.cshtml) | ASP.NET Razor | 239 | 0 | 13 | 252 |
+| [EShop.Web/Pages/Admin/AdminPanel.cshtml.cs](/EShop.Web/Pages/Admin/AdminPanel.cshtml.cs) | C# | 27 | 0 | 4 | 31 |
+| [EShop.Web/Pages/Admin/AdminPanel.css](/EShop.Web/Pages/Admin/AdminPanel.css) | CSS | 12 | 0 | 1 | 13 |
+| [EShop.Web/Pages/Admin/AdminPanel.js](/EShop.Web/Pages/Admin/AdminPanel.js) | JavaScript | 47 | 3 | 4 | 54 |
+| [EShop.Web/Pages/Admin/Create.cshtml](/EShop.Web/Pages/Admin/Create.cshtml) | ASP.NET Razor | 30 | 0 | 2 | 32 |
+| [EShop.Web/Pages/Admin/Create.cshtml.cs](/EShop.Web/Pages/Admin/Create.cshtml.cs) | C# | 21 | 0 | 3 | 24 |
+| [EShop.Web/Pages/Admin/Update.cshtml](/EShop.Web/Pages/Admin/Update.cshtml) | ASP.NET Razor | 8 | 0 | 3 | 11 |
+| [EShop.Web/Pages/Admin/Update.cshtml.cs](/EShop.Web/Pages/Admin/Update.cshtml.cs) | C# | 21 | 0 | 3 | 24 |
+| [EShop.Web/Pages/Basket.cshtml](/EShop.Web/Pages/Basket.cshtml) | ASP.NET Razor | 8 | 0 | 3 | 11 |
+| [EShop.Web/Pages/Basket.cshtml.cs](/EShop.Web/Pages/Basket.cshtml.cs) | C# | 24 | 0 | 5 | 29 |
+| [EShop.Web/Pages/Error.cshtml](/EShop.Web/Pages/Error.cshtml) | ASP.NET Razor | 23 | 0 | 4 | 27 |
+| [EShop.Web/Pages/Error.cshtml.cs](/EShop.Web/Pages/Error.cshtml.cs) | C# | 20 | 0 | 8 | 28 |
+| [EShop.Web/Pages/Index.cshtml](/EShop.Web/Pages/Index.cshtml) | ASP.NET Razor | 41 | 0 | 4 | 45 |
+| [EShop.Web/Pages/Index.cshtml.cs](/EShop.Web/Pages/Index.cshtml.cs) | C# | 25 | 0 | 10 | 35 |
+| [EShop.Web/Pages/Shared/_Layout.cshtml](/EShop.Web/Pages/Shared/_Layout.cshtml) | ASP.NET Razor | 94 | 0 | 11 | 105 |
+| [EShop.Web/Pages/Shared/_Layout.cshtml.css](/EShop.Web/Pages/Shared/_Layout.cshtml.css) | CSS | 38 | 2 | 8 | 48 |
+| [EShop.Web/Pages/Shared/_ValidationScriptsPartial.cshtml](/EShop.Web/Pages/Shared/_ValidationScriptsPartial.cshtml) | ASP.NET Razor | 2 | 0 | 1 | 3 |
+| [EShop.Web/Pages/_ViewImports.cshtml](/EShop.Web/Pages/_ViewImports.cshtml) | ASP.NET Razor | 3 | 0 | 1 | 4 |
+| [EShop.Web/Pages/_ViewStart.cshtml](/EShop.Web/Pages/_ViewStart.cshtml) | ASP.NET Razor | 3 | 0 | 1 | 4 |
+| [EShop.Web/Program.cs](/EShop.Web/Program.cs) | C# | 34 | 0 | 10 | 44 |
+| [EShop.Web/Properties/launchSettings.json](/EShop.Web/Properties/launchSettings.json) | JSON | 28 | 0 | 1 | 29 |
+| [EShop.Web/Services/BasketService.cs](/EShop.Web/Services/BasketService.cs) | C# | 37 | 8 | 8 | 53 |
+| [EShop.Web/Services/CatalogService.cs](/EShop.Web/Services/CatalogService.cs) | C# | 93 | 0 | 14 | 107 |
+| [EShop.Web/Services/IBasketService.cs](/EShop.Web/Services/IBasketService.cs) | C# | 13 | 1 | 1 | 15 |
+| [EShop.Web/Services/ICatalogService.cs](/EShop.Web/Services/ICatalogService.cs) | C# | 18 | 0 | 2 | 20 |
+| [EShop.Web/Services/LoginService.cs](/EShop.Web/Services/LoginService.cs) | C# | 10 | 0 | 2 | 12 |
+| [EShop.Web/Todo.md](/EShop.Web/Todo.md) | Markdown | 9 | 0 | 7 | 16 |
+| [EShop.Web/appsettings.Development.json](/EShop.Web/appsettings.Development.json) | JSON | 9 | 0 | 1 | 10 |
+| [EShop.Web/appsettings.json](/EShop.Web/appsettings.json) | JSON | 16 | 0 | 1 | 17 |
+| [EShop.Web/bin/Debug/net6.0/EShop.Web.deps.json](/EShop.Web/bin/Debug/net6.0/EShop.Web.deps.json) | JSON | 462 | 0 | 0 | 462 |
+| [EShop.Web/bin/Debug/net6.0/EShop.Web.runtimeconfig.json](/EShop.Web/bin/Debug/net6.0/EShop.Web.runtimeconfig.json) | JSON | 19 | 0 | 0 | 19 |
+| [EShop.Web/bin/Debug/net6.0/EShop.Web.staticwebassets.runtime.json](/EShop.Web/bin/Debug/net6.0/EShop.Web.staticwebassets.runtime.json) | JSON | 1 | 0 | 0 | 1 |
+| [EShop.Web/bin/Debug/net6.0/appsettings.Development.json](/EShop.Web/bin/Debug/net6.0/appsettings.Development.json) | JSON | 9 | 0 | 1 | 10 |
+| [EShop.Web/bin/Debug/net6.0/appsettings.json](/EShop.Web/bin/Debug/net6.0/appsettings.json) | JSON | 16 | 0 | 1 | 17 |
+| [EShop.Web/obj/Debug/net6.0/.NETCoreApp,Version=v6.0.AssemblyAttributes.cs](/EShop.Web/obj/Debug/net6.0/.NETCoreApp,Version=v6.0.AssemblyAttributes.cs) | C# | 3 | 1 | 1 | 5 |
+| [EShop.Web/obj/Debug/net6.0/EShop.Web.AssemblyInfo.cs](/EShop.Web/obj/Debug/net6.0/EShop.Web.AssemblyInfo.cs) | C# | 9 | 9 | 5 | 23 |
+| [EShop.Web/obj/Debug/net6.0/EShop.Web.GeneratedMSBuildEditorConfig.editorconfig](/EShop.Web/obj/Debug/net6.0/EShop.Web.GeneratedMSBuildEditorConfig.editorconfig) | EditorConfig | 58 | 0 | 14 | 72 |
+| [EShop.Web/obj/Debug/net6.0/EShop.Web.GlobalUsings.g.cs](/EShop.Web/obj/Debug/net6.0/EShop.Web.GlobalUsings.g.cs) | C# | 16 | 1 | 1 | 18 |
+| [EShop.Web/obj/Debug/net6.0/EShop.Web.RazorAssemblyInfo.cs](/EShop.Web/obj/Debug/net6.0/EShop.Web.RazorAssemblyInfo.cs) | C# | 4 | 9 | 5 | 18 |
+| [EShop.Web/obj/Debug/net6.0/EShop.Web.sourcelink.json](/EShop.Web/obj/Debug/net6.0/EShop.Web.sourcelink.json) | JSON | 1 | 0 | 0 | 1 |
+| [EShop.Web/obj/Debug/net6.0/scopedcss/Pages/Shared/_Layout.cshtml.rz.scp.css](/EShop.Web/obj/Debug/net6.0/scopedcss/Pages/Shared/_Layout.cshtml.rz.scp.css) | CSS | 38 | 2 | 8 | 48 |
+| [EShop.Web/obj/Debug/net6.0/scopedcss/bundle/EShop.Web.styles.css](/EShop.Web/obj/Debug/net6.0/scopedcss/bundle/EShop.Web.styles.css) | CSS | 38 | 3 | 9 | 50 |
+| [EShop.Web/obj/Debug/net6.0/scopedcss/projectbundle/EShop.Web.bundle.scp.css](/EShop.Web/obj/Debug/net6.0/scopedcss/projectbundle/EShop.Web.bundle.scp.css) | CSS | 38 | 3 | 9 | 50 |
+| [EShop.Web/obj/Debug/net6.0/staticwebassets.build.json](/EShop.Web/obj/Debug/net6.0/staticwebassets.build.json) | JSON | 1,217 | 0 | 0 | 1,217 |
+| [EShop.Web/obj/Debug/net6.0/staticwebassets.development.json](/EShop.Web/obj/Debug/net6.0/staticwebassets.development.json) | JSON | 1 | 0 | 0 | 1 |
+| [EShop.Web/obj/Debug/net6.0/staticwebassets.pack.json](/EShop.Web/obj/Debug/net6.0/staticwebassets.pack.json) | JSON | 269 | 0 | 0 | 269 |
+| [EShop.Web/obj/Debug/net6.0/staticwebassets/msbuild.EShop.Web.Microsoft.AspNetCore.StaticWebAssets.props](/EShop.Web/obj/Debug/net6.0/staticwebassets/msbuild.EShop.Web.Microsoft.AspNetCore.StaticWebAssets.props) | XML | 996 | 0 | 0 | 996 |
+| [EShop.Web/obj/Debug/net6.0/staticwebassets/msbuild.build.EShop.Web.props](/EShop.Web/obj/Debug/net6.0/staticwebassets/msbuild.build.EShop.Web.props) | XML | 3 | 0 | 0 | 3 |
+| [EShop.Web/obj/Debug/net6.0/staticwebassets/msbuild.buildMultiTargeting.EShop.Web.props](/EShop.Web/obj/Debug/net6.0/staticwebassets/msbuild.buildMultiTargeting.EShop.Web.props) | XML | 3 | 0 | 0 | 3 |
+| [EShop.Web/obj/Debug/net6.0/staticwebassets/msbuild.buildTransitive.EShop.Web.props](/EShop.Web/obj/Debug/net6.0/staticwebassets/msbuild.buildTransitive.EShop.Web.props) | XML | 3 | 0 | 0 | 3 |
+| [EShop.Web/obj/EShop.Web.csproj.nuget.dgspec.json](/EShop.Web/obj/EShop.Web.csproj.nuget.dgspec.json) | JSON | 104 | 0 | 0 | 104 |
+| [EShop.Web/obj/EShop.Web.csproj.nuget.g.props](/EShop.Web/obj/EShop.Web.csproj.nuget.g.props) | XML | 15 | 0 | 0 | 15 |
+| [EShop.Web/obj/EShop.Web.csproj.nuget.g.targets](/EShop.Web/obj/EShop.Web.csproj.nuget.g.targets) | XML | 7 | 0 | 0 | 7 |
+| [EShop.Web/obj/project.assets.json](/EShop.Web/obj/project.assets.json) | JSON | 1,433 | 0 | 0 | 1,433 |
+| [EShop.Web/obj/project.packagespec.json](/EShop.Web/obj/project.packagespec.json) | JSON | 1 | 0 | 0 | 1 |
+| [EShop.Web/wwwroot/css/site.css](/EShop.Web/wwwroot/css/site.css) | CSS | 49 | 7 | 11 | 67 |
+| [EShop.Web/wwwroot/js/scripts.js](/EShop.Web/wwwroot/js/scripts.js) | JavaScript | 0 | 7 | 0 | 7 |
+| [EShop.Web/wwwroot/js/site.js](/EShop.Web/wwwroot/js/site.js) | JavaScript | 47 | 5 | 5 | 57 |
+| [EShop.Web/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.css](/EShop.Web/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.css) | CSS | 3,855 | 7 | 1,135 | 4,997 |
+| [EShop.Web/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.min.css](/EShop.Web/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.min.css) | CSS | 1 | 6 | 0 | 7 |
+| [EShop.Web/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.css](/EShop.Web/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.css) | CSS | 3,855 | 7 | 1,134 | 4,996 |
+| [EShop.Web/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css](/EShop.Web/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css) | CSS | 1 | 6 | 0 | 7 |
+| [EShop.Web/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.css](/EShop.Web/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.css) | CSS | 347 | 16 | 64 | 427 |
+| [EShop.Web/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.min.css](/EShop.Web/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.min.css) | CSS | 1 | 7 | 0 | 8 |
+| [EShop.Web/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.css](/EShop.Web/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.css) | CSS | 353 | 8 | 63 | 424 |
+| [EShop.Web/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css](/EShop.Web/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css) | CSS | 1 | 7 | 0 | 8 |
+| [EShop.Web/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.css](/EShop.Web/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.css) | CSS | 3,729 | 9 | 1,128 | 4,866 |
+| [EShop.Web/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.min.css](/EShop.Web/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.min.css) | CSS | 1 | 6 | 0 | 7 |
+| [EShop.Web/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.css](/EShop.Web/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.css) | CSS | 3,725 | 7 | 1,125 | 4,857 |
+| [EShop.Web/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css](/EShop.Web/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css) | CSS | 1 | 6 | 0 | 7 |
+| [EShop.Web/wwwroot/lib/bootstrap/dist/css/bootstrap.css](/EShop.Web/wwwroot/lib/bootstrap/dist/css/bootstrap.css) | CSS | 9,453 | 27 | 1,741 | 11,221 |
+| [EShop.Web/wwwroot/lib/bootstrap/dist/css/bootstrap.min.css](/EShop.Web/wwwroot/lib/bootstrap/dist/css/bootstrap.min.css) | CSS | 2 | 5 | 0 | 7 |
+| [EShop.Web/wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.css](/EShop.Web/wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.css) | CSS | 9,455 | 7 | 1,735 | 11,197 |
+| [EShop.Web/wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.min.css](/EShop.Web/wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.min.css) | CSS | 2 | 5 | 0 | 7 |
+| [EShop.Web/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.js](/EShop.Web/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.js) | JavaScript | 4,846 | 584 | 1,351 | 6,781 |
+| [EShop.Web/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.min.js](/EShop.Web/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.min.js) | JavaScript | 1 | 6 | 0 | 7 |
+| [EShop.Web/wwwroot/lib/bootstrap/dist/js/bootstrap.esm.js](/EShop.Web/wwwroot/lib/bootstrap/dist/js/bootstrap.esm.js) | JavaScript | 3,418 | 495 | 1,065 | 4,978 |
+| [EShop.Web/wwwroot/lib/bootstrap/dist/js/bootstrap.esm.min.js](/EShop.Web/wwwroot/lib/bootstrap/dist/js/bootstrap.esm.min.js) | JavaScript | 1 | 6 | 0 | 7 |
+| [EShop.Web/wwwroot/lib/bootstrap/dist/js/bootstrap.js](/EShop.Web/wwwroot/lib/bootstrap/dist/js/bootstrap.js) | JavaScript | 3,457 | 501 | 1,069 | 5,027 |
+| [EShop.Web/wwwroot/lib/bootstrap/dist/js/bootstrap.min.js](/EShop.Web/wwwroot/lib/bootstrap/dist/js/bootstrap.min.js) | JavaScript | 1 | 6 | 0 | 7 |
+| [EShop.Web/wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js](/EShop.Web/wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js) | JavaScript | 306 | 73 | 54 | 433 |
+| [EShop.Web/wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js](/EShop.Web/wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js) | JavaScript | 1 | 4 | 1 | 6 |
+| [EShop.Web/wwwroot/lib/jquery-validation/LICENSE.md](/EShop.Web/wwwroot/lib/jquery-validation/LICENSE.md) | Markdown | 18 | 0 | 5 | 23 |
+| [EShop.Web/wwwroot/lib/jquery-validation/dist/additional-methods.js](/EShop.Web/wwwroot/lib/jquery-validation/dist/additional-methods.js) | JavaScript | 867 | 443 | 202 | 1,512 |
+| [EShop.Web/wwwroot/lib/jquery-validation/dist/additional-methods.min.js](/EShop.Web/wwwroot/lib/jquery-validation/dist/additional-methods.min.js) | JavaScript | 1 | 3 | 0 | 4 |
+| [EShop.Web/wwwroot/lib/jquery-validation/dist/jquery.validate.js](/EShop.Web/wwwroot/lib/jquery-validation/dist/jquery.validate.js) | JavaScript | 1,228 | 189 | 244 | 1,661 |
+| [EShop.Web/wwwroot/lib/jquery-validation/dist/jquery.validate.min.js](/EShop.Web/wwwroot/lib/jquery-validation/dist/jquery.validate.min.js) | JavaScript | 1 | 3 | 0 | 4 |
+| [EShop.Web/wwwroot/lib/jquery/dist/jquery.js](/EShop.Web/wwwroot/lib/jquery/dist/jquery.js) | JavaScript | 6,906 | 1,890 | 2,077 | 10,873 |
+| [EShop.Web/wwwroot/lib/jquery/dist/jquery.min.js](/EShop.Web/wwwroot/lib/jquery/dist/jquery.min.js) | JavaScript | 1 | 1 | 1 | 3 |
+| [Ocelot.Api/Controllers/WeatherForecastController.cs](/Ocelot.Api/Controllers/WeatherForecastController.cs) | C# | 27 | 0 | 6 | 33 |
+| [Ocelot.Api/Dockerfile](/Ocelot.Api/Dockerfile) | Docker | 16 | 0 | 4 | 20 |
+| [Ocelot.Api/Ocelot.Api.csproj](/Ocelot.Api/Ocelot.Api.csproj) | XML | 14 | 0 | 5 | 19 |
+| [Ocelot.Api/Program.cs](/Ocelot.Api/Program.cs) | C# | 36 | 0 | 9 | 45 |
+| [Ocelot.Api/Properties/launchSettings.json](/Ocelot.Api/Properties/launchSettings.json) | JSON | 31 | 0 | 1 | 32 |
+| [Ocelot.Api/WeatherForecast.cs](/Ocelot.Api/WeatherForecast.cs) | C# | 8 | 0 | 5 | 13 |
+| [Ocelot.Api/appsettings.Development.json](/Ocelot.Api/appsettings.Development.json) | JSON | 8 | 0 | 1 | 9 |
+| [Ocelot.Api/appsettings.json](/Ocelot.Api/appsettings.json) | JSON | 9 | 0 | 1 | 10 |
+| [Ocelot.Api/bin/Debug/net6.0/Ocelot.Api.deps.json](/Ocelot.Api/bin/Debug/net6.0/Ocelot.Api.deps.json) | JSON | 309 | 0 | 0 | 309 |
+| [Ocelot.Api/bin/Debug/net6.0/Ocelot.Api.runtimeconfig.json](/Ocelot.Api/bin/Debug/net6.0/Ocelot.Api.runtimeconfig.json) | JSON | 19 | 0 | 0 | 19 |
+| [Ocelot.Api/bin/Debug/net6.0/appsettings.Development.json](/Ocelot.Api/bin/Debug/net6.0/appsettings.Development.json) | JSON | 8 | 0 | 1 | 9 |
+| [Ocelot.Api/bin/Debug/net6.0/appsettings.json](/Ocelot.Api/bin/Debug/net6.0/appsettings.json) | JSON | 9 | 0 | 1 | 10 |
+| [Ocelot.Api/bin/Debug/net6.0/ocelot.Development.json](/Ocelot.Api/bin/Debug/net6.0/ocelot.Development.json) | JSON | 163 | 0 | 1 | 164 |
+| [Ocelot.Api/bin/Debug/net6.0/ocelot.Local.json](/Ocelot.Api/bin/Debug/net6.0/ocelot.Local.json) | JSON | 163 | 0 | 1 | 164 |
+| [Ocelot.Api/obj/Debug/net6.0/.NETCoreApp,Version=v6.0.AssemblyAttributes.cs](/Ocelot.Api/obj/Debug/net6.0/.NETCoreApp,Version=v6.0.AssemblyAttributes.cs) | C# | 3 | 1 | 1 | 5 |
+| [Ocelot.Api/obj/Debug/net6.0/Ocelot.Api.AssemblyInfo.cs](/Ocelot.Api/obj/Debug/net6.0/Ocelot.Api.AssemblyInfo.cs) | C# | 9 | 9 | 5 | 23 |
+| [Ocelot.Api/obj/Debug/net6.0/Ocelot.Api.GeneratedMSBuildEditorConfig.editorconfig](/Ocelot.Api/obj/Debug/net6.0/Ocelot.Api.GeneratedMSBuildEditorConfig.editorconfig) | EditorConfig | 19 | 0 | 1 | 20 |
+| [Ocelot.Api/obj/Debug/net6.0/Ocelot.Api.GlobalUsings.g.cs](/Ocelot.Api/obj/Debug/net6.0/Ocelot.Api.GlobalUsings.g.cs) | C# | 16 | 1 | 1 | 18 |
+| [Ocelot.Api/obj/Debug/net6.0/Ocelot.Api.MvcApplicationPartsAssemblyInfo.cs](/Ocelot.Api/obj/Debug/net6.0/Ocelot.Api.MvcApplicationPartsAssemblyInfo.cs) | C# | 4 | 9 | 5 | 18 |
+| [Ocelot.Api/obj/Debug/net6.0/Ocelot.Api.sourcelink.json](/Ocelot.Api/obj/Debug/net6.0/Ocelot.Api.sourcelink.json) | JSON | 1 | 0 | 0 | 1 |
+| [Ocelot.Api/obj/Debug/net6.0/staticwebassets.build.json](/Ocelot.Api/obj/Debug/net6.0/staticwebassets.build.json) | JSON | 11 | 0 | 0 | 11 |
+| [Ocelot.Api/obj/Debug/net6.0/staticwebassets/msbuild.build.Ocelot.Api.props](/Ocelot.Api/obj/Debug/net6.0/staticwebassets/msbuild.build.Ocelot.Api.props) | XML | 3 | 0 | 0 | 3 |
+| [Ocelot.Api/obj/Debug/net6.0/staticwebassets/msbuild.buildMultiTargeting.Ocelot.Api.props](/Ocelot.Api/obj/Debug/net6.0/staticwebassets/msbuild.buildMultiTargeting.Ocelot.Api.props) | XML | 3 | 0 | 0 | 3 |
+| [Ocelot.Api/obj/Debug/net6.0/staticwebassets/msbuild.buildTransitive.Ocelot.Api.props](/Ocelot.Api/obj/Debug/net6.0/staticwebassets/msbuild.buildTransitive.Ocelot.Api.props) | XML | 3 | 0 | 0 | 3 |
+| [Ocelot.Api/obj/Ocelot.Api.csproj.nuget.dgspec.json](/Ocelot.Api/obj/Ocelot.Api.csproj.nuget.dgspec.json) | JSON | 96 | 0 | 0 | 96 |
+| [Ocelot.Api/obj/Ocelot.Api.csproj.nuget.g.props](/Ocelot.Api/obj/Ocelot.Api.csproj.nuget.g.props) | XML | 24 | 0 | 0 | 24 |
+| [Ocelot.Api/obj/Ocelot.Api.csproj.nuget.g.targets](/Ocelot.Api/obj/Ocelot.Api.csproj.nuget.g.targets) | XML | 7 | 0 | 0 | 7 |
+| [Ocelot.Api/obj/project.assets.json](/Ocelot.Api/obj/project.assets.json) | JSON | 1,108 | 0 | 0 | 1,108 |
+| [Ocelot.Api/obj/project.packagespec.json](/Ocelot.Api/obj/project.packagespec.json) | JSON | 1 | 0 | 0 | 1 |
+| [Ocelot.Api/ocelot.Development.json](/Ocelot.Api/ocelot.Development.json) | JSON | 163 | 0 | 1 | 164 |
+| [Ocelot.Api/ocelot.Local.json](/Ocelot.Api/ocelot.Local.json) | JSON | 163 | 0 | 1 | 164 |
+| [Todo.general.md](/Todo.general.md) | Markdown | 4 | 0 | 4 | 8 |
+| [docker-compose.override.yml](/docker-compose.override.yml) | YAML | 84 | 0 | 16 | 100 |
+| [docker-compose.yml](/docker-compose.yml) | YAML | 36 | 0 | 14 | 50 |
+| [emptyhtml.html](/emptyhtml.html) | HTML | 140 | 43 | 2 | 185 |
+
+[Summary](results.md) / Details / [Diff Summary](diff.md) / [Diff Details](diff-details.md)

@@ -62,6 +62,14 @@ services:
     ports:
       - "8001:80"
 
+  logcontrol:
+    container_name: logcontrol
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - "ElasticConfiguration:Uri=http://elasticsearch:9200"
+    ports:
+      - "8002:80"
+
 
   ocelotapigw:
     container_name: ocelotapigw

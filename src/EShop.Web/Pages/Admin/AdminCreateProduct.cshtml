@@ -1,0 +1,108 @@
+@page
+@model EShop.Web.Pages.Admin.AdminCreateProduct
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+    ViewData["Title"] = "AdminCreateProduct";
+}
+
+
+<div class="row">
+    <partial name="_SidebarLayout"/>
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+        <div class="py-5 text-center">
+            <h2>Add Product</h2>
+        </div>
+
+        <div class="row g-5">
+
+            <div class="col-md-6 col-lg-8">
+                <h4 class="mb-3">Product Properties</h4>
+
+                <form class="needs-validation" method="POST">
+                    <div class="row g-3">
+                        <div class="col-12">
+                            <label for="url-image" class="form-label">img</label>
+                            <input class="form-control" type="text" id="url-image" name="image" required>
+                            <div class="invalid-feedback">
+                                Valid image url is required.
+                            </div>
+                        </div>
+
+
+
+
+                        <div class="col-sm-6">
+                            <label for="firstName" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="firstName" placeholder="" value="" name="name"
+                                required>
+                            <div class="invalid-feedback">
+                                Valid first name is required.
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <label for="category" class="form-label" name="category">Category</label>
+                            <select class="form-select" id="category" name="category" required>
+                                <option value="category">Choose...</option>
+                                @foreach (var category in Model.CategoryList)
+                                {
+                                    <option value="@category.Id">@category.Type</option>
+                                }
+                            </select>
+                            <div class="invalid-feedback">
+                                Please provide a valid Category.
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <label for="brand" class="form-label" name="brand">Brand</label>
+                            <select class="form-select" id="brand" name="brand" required>
+                                <option value="">Choose...</option>
+                                @foreach (var brand in Model.BrandList)
+                                {
+                                    <option value="@brand.Id">@brand.Brand</option>
+                                }
+                            </select>
+                            <div class="invalid-feedback">
+                                Please provide a valid Brand.
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <label for="price" class="form-label" name="price">Price</label>
+                            <input type="text" class="form-control" id="price" placeholder="" value="" name="price"
+                                required>
+                            <div class="invalid-feedback">
+                                Valid last name is required.
+                            </div>
+                        </div>
+
+
+                        <div class="col-12">
+                            <label for="description" class="form-label" name="description">Description <span
+                                    class="text-muted">(Optional)</span></label>
+                            <input type="text-area" class="form-control" id="description" placeholder="Description"
+                                name="description">
+                        </div>
+
+
+                        <!-- <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="same-address">
+                        <label class="form-check-label" for="same-address">Shipping address is the same as my billing
+                            address</label>
+                    </div>
+
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="save-info">
+                        <label class="form-check-label" for="save-info">Save this information for next time</label>
+                    </div> -->
+
+                        <hr class="my-4">
+
+                        <button class="w-100 btn btn-success btn-lg" type="submit">Add</button>
+                </form>
+            </div>
+        </div>
+
+</main>
+</div>

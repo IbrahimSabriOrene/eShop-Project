@@ -1,3 +1,4 @@
+using System.Runtime.CompilerServices;
 using Catalog.Api.Models;
 using Catalog.Api.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -13,7 +14,7 @@ public static class CatalogApi
         app.MapPost("/api/products/by", GetCatalogItemsByIds);
         app.MapGet("/api/products/{id:int}", GetCatalogItemsById);
         app.MapGet("/api/products/by-name/{name:minlength(1)}", GetCatalogItemsByName);
-        app.MapGet("/api/products/by-type/{typeId}/by-brand/{brandId?}", GetProductsByBrandAndTypeId);
+        app.MapGet("/api/products/by-type/{typeId?}/by-brand/{brandId?}", GetProductsByBrandAndTypeId);
         app.MapGet("/api/products/by-brand/{brandId:int?}", GetProductsByBrandId);
         app.MapPut("/api/products/{id:int}", UpdateProduct);
         app.MapPost("/api/products", CreateProduct);
@@ -158,7 +159,7 @@ public static class CatalogApi
         item.Price = product.Price;
         item.Description = product.Description;
         item.ImageFile = product.ImageFile;
-        item.CatalogBrandId = product.CatalogBrandId;
+        item.CatalogBrandId = product   .CatalogBrandId;
         item.CatalogTypeId = product.CatalogTypeId;
 
         // implement mapper
@@ -243,6 +244,8 @@ public static class CatalogApi
         try
         {
             var products = await services.Repository.GetCatalogItemsBrandAndTypeId(typeId, brandId) ?? throw new KeyNotFoundException();
+
+            // This returns empty array, need bug fix
             return products;
         }
         catch (Exception ex)

@@ -15,8 +15,8 @@ namespace Basket.Api.Controllers
         private readonly IShoppingCartService _cart;
         public ShoppingCartApiController(ILogger<ShoppingCartApiController> logger, IShoppingCartService cart)
         {
-            _logger = logger;
-            _cart = cart;
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+            _cart = cart ?? throw new ArgumentNullException(nameof(logger));
         }
 
 

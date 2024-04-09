@@ -11,7 +11,7 @@ public class ProfileModel : PageModel
     {
         if (!User.Identity!.IsAuthenticated)
         {
-            Response.Redirect("/Account/Login");
+                Response.Redirect("/Account/Login");
         }
 
         LoadProfileInfo();

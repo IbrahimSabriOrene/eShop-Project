@@ -16,7 +16,7 @@ services:
   portainer:
     image: portainer/portainer-ce
 
-  catalog.api:
+  catalog.api:  
     image: ${DOCKER_REGISTRY-}catalogapi
     build:
       context: .
@@ -27,6 +27,12 @@ services:
     build:
       context: .
       dockerfile: Basket.Api/Dockerfile
+      
+  logcontrol:
+    image: ${DOCKER_REGISTRY-}logcontrol
+    build:
+      context: .
+      dockerfile: LogControl/Dockerfile
 
   
   ocelotapigw:
